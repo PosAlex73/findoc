@@ -62,6 +62,13 @@ services:
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - "9090:8080"
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
