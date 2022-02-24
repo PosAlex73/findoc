@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\StoreSpecReviewRequest;
-use App\Http\Requests\UpdateSpecReviewRequest;
-use App\Models\SpecReview;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSettingRequest;
+use App\Http\Requests\UpdateSettingRequest;
+use App\Models\Setting;
 
-class SpecReviewController extends Controller
+class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class SpecReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSpecReviewRequest  $request
+     * @param  \App\Http\Requests\StoreSettingRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSpecReviewRequest $request)
+    public function store(StoreSettingRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class SpecReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SpecReview  $specReview
+     * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function show(SpecReview $specReview)
+    public function show(Setting $setting)
     {
         //
     }
@@ -53,10 +54,10 @@ class SpecReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SpecReview  $specReview
+     * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit(SpecReview $specReview)
+    public function edit(Setting $setting)
     {
         //
     }
@@ -64,11 +65,11 @@ class SpecReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSpecReviewRequest  $request
-     * @param  \App\Models\SpecReview  $specReview
+     * @param  \App\Http\Requests\UpdateSettingRequest  $request
+     * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSpecReviewRequest $request, SpecReview $specReview)
+    public function update(UpdateSettingRequest $request, Setting $setting)
     {
         //
     }
@@ -76,10 +77,10 @@ class SpecReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SpecReview  $specReview
+     * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SpecReview $specReview)
+    public function destroy(Setting $setting)
     {
         //
     }

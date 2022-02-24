@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\StoreCategpryRequest;
-use App\Http\Requests\UpdateCategpryRequest;
-use App\Models\Categpry;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePlanRequest;
+use App\Http\Requests\UpdatePlanRequest;
+use App\Models\Plan;
 
-class CategpryController extends Controller
+class PlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class CategpryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategpryRequest  $request
+     * @param  \App\Http\Requests\StorePlanRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategpryRequest $request)
+    public function store(StorePlanRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class CategpryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categpry  $categpry
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function show(Categpry $categpry)
+    public function show(Plan $plan)
     {
         //
     }
@@ -53,10 +54,10 @@ class CategpryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categpry  $categpry
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categpry $categpry)
+    public function edit(Plan $plan)
     {
         //
     }
@@ -64,11 +65,11 @@ class CategpryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategpryRequest  $request
-     * @param  \App\Models\Categpry  $categpry
+     * @param  \App\Http\Requests\UpdatePlanRequest  $request
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCategpryRequest $request, Categpry $categpry)
+    public function update(UpdatePlanRequest $request, Plan $plan)
     {
         //
     }
@@ -76,10 +77,10 @@ class CategpryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categpry  $categpry
+     * @param  \App\Models\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categpry $categpry)
+    public function destroy(Plan $plan)
     {
         //
     }

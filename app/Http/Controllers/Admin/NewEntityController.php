@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\StoreAppointmentRequest;
-use App\Http\Requests\UpdateAppointmentRequest;
-use App\Models\Appointment;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreNewEntityRequest;
+use App\Http\Requests\UpdateNewEntityRequest;
+use App\Models\NewEntity;
 
-class AppointmentController extends Controller
+class NewEntityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAppointmentRequest  $request
+     * @param  \App\Http\Requests\StoreNewEntityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAppointmentRequest $request)
+    public function store(StoreNewEntityRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class AppointmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function show(Appointment $appointment)
+    public function show(NewEntity $newEntity)
     {
         //
     }
@@ -53,10 +54,10 @@ class AppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appointment $appointment)
+    public function edit(NewEntity $newEntity)
     {
         //
     }
@@ -64,11 +65,11 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAppointmentRequest  $request
-     * @param  \App\Models\Appointment  $appointment
+     * @param  \App\Http\Requests\UpdateNewEntityRequest  $request
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
+    public function update(UpdateNewEntityRequest $request, NewEntity $newEntity)
     {
         //
     }
@@ -76,10 +77,10 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Appointment  $appointment
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(NewEntity $newEntity)
     {
         //
     }

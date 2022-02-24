@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\StoreUserProfileRequest;
-use App\Http\Requests\UpdateUserProfileRequest;
-use App\Models\UserProfile;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCategpryRequest;
+use App\Http\Requests\UpdateCategpryRequest;
+use App\Models\Categpry;
 
-class UserProfileController extends Controller
+class CategpryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class UserProfileController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserProfileRequest  $request
+     * @param  \App\Http\Requests\StoreCategpryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserProfileRequest $request)
+    public function store(StoreCategpryRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class UserProfileController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserProfile  $userProfile
+     * @param  \App\Models\Categpry  $categpry
      * @return \Illuminate\Http\Response
      */
-    public function show(UserProfile $userProfile)
+    public function show(Categpry $categpry)
     {
         //
     }
@@ -53,10 +54,10 @@ class UserProfileController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserProfile  $userProfile
+     * @param  \App\Models\Categpry  $categpry
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserProfile $userProfile)
+    public function edit(Categpry $categpry)
     {
         //
     }
@@ -64,11 +65,11 @@ class UserProfileController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserProfileRequest  $request
-     * @param  \App\Models\UserProfile  $userProfile
+     * @param  \App\Http\Requests\UpdateCategpryRequest  $request
+     * @param  \App\Models\Categpry  $categpry
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserProfileRequest $request, UserProfile $userProfile)
+    public function update(UpdateCategpryRequest $request, Categpry $categpry)
     {
         //
     }
@@ -76,10 +77,10 @@ class UserProfileController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserProfile  $userProfile
+     * @param  \App\Models\Categpry  $categpry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserProfile $userProfile)
+    public function destroy(Categpry $categpry)
     {
         //
     }

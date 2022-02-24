@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\StoreUserHistoryRequest;
-use App\Http\Requests\UpdateUserHistoryRequest;
-use App\Models\UserHistory;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreClinicRequest;
+use App\Http\Requests\UpdateClinicRequest;
+use App\Models\Clinic;
 
-class UserHistoryController extends Controller
+class ClinicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class UserHistoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserHistoryRequest  $request
+     * @param  \App\Http\Requests\StoreClinicRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUserHistoryRequest $request)
+    public function store(StoreClinicRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class UserHistoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\UserHistory  $userHistory
+     * @param  \App\Models\Clinic  $clinic
      * @return \Illuminate\Http\Response
      */
-    public function show(UserHistory $userHistory)
+    public function show(Clinic $clinic)
     {
         //
     }
@@ -53,10 +54,10 @@ class UserHistoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\UserHistory  $userHistory
+     * @param  \App\Models\Clinic  $clinic
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserHistory $userHistory)
+    public function edit(Clinic $clinic)
     {
         //
     }
@@ -64,11 +65,11 @@ class UserHistoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserHistoryRequest  $request
-     * @param  \App\Models\UserHistory  $userHistory
+     * @param  \App\Http\Requests\UpdateClinicRequest  $request
+     * @param  \App\Models\Clinic  $clinic
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserHistoryRequest $request, UserHistory $userHistory)
+    public function update(UpdateClinicRequest $request, Clinic $clinic)
     {
         //
     }
@@ -76,10 +77,10 @@ class UserHistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\UserHistory  $userHistory
+     * @param  \App\Models\Clinic  $clinic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserHistory $userHistory)
+    public function destroy(Clinic $clinic)
     {
         //
     }

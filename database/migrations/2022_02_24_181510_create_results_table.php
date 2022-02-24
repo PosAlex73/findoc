@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('text');
-            $table->string('image', 1024);
-            $table->string('status', 1)->default(\App\Enums\BlogStatuses::ACTIVE);
-            $table->unsignedBigInteger('category_id')->default(0);
-            $table->foreign('category_id')->references('id')->on('category')->onDelete('set default');
             $table->timestamps();
         });
     }
@@ -32,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('results');
     }
 };

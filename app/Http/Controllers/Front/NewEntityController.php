@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
-use App\Http\Requests\StoreSpecRequest;
-use App\Http\Requests\UpdateSpecRequest;
-use App\Models\Spec;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreNewEntityRequest;
+use App\Http\Requests\UpdateNewEntityRequest;
+use App\Models\NewEntity;
 
-class SpecController extends Controller
+class NewEntityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class SpecController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSpecRequest  $request
+     * @param  \App\Http\Requests\StoreNewEntityRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSpecRequest $request)
+    public function store(StoreNewEntityRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class SpecController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Spec  $spec
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function show(Spec $spec)
+    public function show(NewEntity $newEntity)
     {
         //
     }
@@ -53,10 +54,10 @@ class SpecController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Spec  $spec
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Spec $spec)
+    public function edit(NewEntity $newEntity)
     {
         //
     }
@@ -64,11 +65,11 @@ class SpecController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSpecRequest  $request
-     * @param  \App\Models\Spec  $spec
+     * @param  \App\Http\Requests\UpdateNewEntityRequest  $request
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSpecRequest $request, Spec $spec)
+    public function update(UpdateNewEntityRequest $request, NewEntity $newEntity)
     {
         //
     }
@@ -76,10 +77,10 @@ class SpecController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Spec  $spec
+     * @param  \App\Models\NewEntity  $newEntity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Spec $spec)
+    public function destroy(NewEntity $newEntity)
     {
         //
     }
