@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 255)->nullable(false);
+            $table->text('value');
+            $table->string('type', 10)->nullable(false)->default(\App\Enums\Settings\SettingEnums::INPUT);
             $table->timestamps();
         });
     }

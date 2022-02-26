@@ -4,9 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-/**
- * @
- */
 return new class extends Migration
 {
     /**
@@ -16,9 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('schedules', function (Blueprint $table) {
+        Schema::create('spec_exps', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('spec_id');
+            $table->string('title');
+            $table->text('description');
+            $table->date('start')->nullable(false);
+            $table->date('end')->nullable(true);
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('schedules');
+        Schema::dropIfExists('spec_exps');
     }
 };

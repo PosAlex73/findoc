@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->string('status', 1)->nullable(false)->default(\App\Enums\CommonStatuses::ACTIVE);
             $table->timestamps();
         });
     }

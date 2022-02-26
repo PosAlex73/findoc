@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->unsignedBigInteger('spec_id');
+            $table->string('type', 1)->nullable(false)->default(\App\Enums\Specs\RecordType::SPEC);
+            $table->dateTime('datetime');
+            $table->text('text');
             $table->timestamps();
         });
     }

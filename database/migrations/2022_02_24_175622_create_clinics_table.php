@@ -17,8 +17,19 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('status', 1)->nullable(false)->default()
+            $table->string('status', 1)->nullable(false)->default(\App\Enums\Specs\ClinicStatuses::ACTIVE);
+            $table->year('found');
+            $table->string('phone', 64);
+            $table->string('address');
             $table->timestamps();
+        });
+
+        Schema::create('category_clinic', function (Blueprint $table) {
+           $table->unsignedBigInteger('category_id');
+           $table->unsignedBigInteger('clinic_id');
+           $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete();
+           $table->foreign('clinic_id')->references('id')->on('clinics')->cascadeOnDelete();
+           $table->timestamps();
         });
     }
 
@@ -30,5 +41,6 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('clinics');
+        Schema::dropIfExists('category_clinic');
     }
 };
