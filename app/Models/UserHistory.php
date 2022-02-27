@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class UserHistory extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title', 'description'
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

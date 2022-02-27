@@ -32,15 +32,6 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('specialization_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('specialization_id')->references('id')->on('specializations')->cascadeOnDelete();
-            $table->timestamps();
-        });
-
-        Schema::create('spec_spec_exp', function (Blueprint $table) {
-            $table->unsignedBigInteger('spec_id');
-            $table->unsignedBigInteger('exp_id');
-            $table->foreign('spec_id')->references('id')->on('specs')->cascadeOnDelete();
-            $table->foreign('exp_id')->references('id')->on('spec_exps')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -54,6 +45,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('specs');
         Schema::dropIfExists('spec_user');
-        Schema::dropIfExists('spec_spec_exp');
     }
 };

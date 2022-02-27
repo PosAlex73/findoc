@@ -17,7 +17,7 @@ class ClinicFactory extends Factory
     public function definition()
     {
         return [
-            //
+
         ];
     }
 }

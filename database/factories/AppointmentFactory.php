@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\Specs\RecordStatus;
+use App\Enums\Specs\RecordType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,9 @@ class AppointmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'text' => $this->faker->text(),
+            'datetime' => $this->faker->dateTime(),
+            'type' => RecordStatus::APPOINTED
         ];
     }
 }

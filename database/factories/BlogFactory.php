@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\BlogStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'text' => $this->faker->text(200),
+            'image' => '',
+            'status' => BlogStatuses::ACTIVE
         ];
     }
 }
