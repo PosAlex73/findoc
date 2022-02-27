@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('title', 255)->nullable(false);
             $table->text('value');
+            $table->string('tab', 64);
             $table->string('type', 10)->nullable(false)->default(\App\Enums\Settings\SettingEnums::INPUT);
             $table->timestamps();
         });
