@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Promo\PromoStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class PromotionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'description' => $this->faker->text(100),
+            'status' => PromoStatuses::ACTIVE
         ];
     }
 }

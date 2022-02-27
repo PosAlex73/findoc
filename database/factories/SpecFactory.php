@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Specs\SpecStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,12 @@ class SpecFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'description' => $this->faker->text(50),
+            'education' => $this->faker->text(50),
+            'experience' => rand(1, 10),
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'spec_status' => SpecStatuses::ACTIVE
         ];
     }
 }

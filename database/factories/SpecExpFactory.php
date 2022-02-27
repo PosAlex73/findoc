@@ -17,7 +17,10 @@ class SpecExpFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'description' => $this->faker->text(50),
+            'start' => $this->faker->dateTime(),
+            'end' => $this->faker->dateTime(),
         ];
     }
 }

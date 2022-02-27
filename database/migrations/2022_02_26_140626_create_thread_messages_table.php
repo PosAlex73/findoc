@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('thread_id');
             $table->foreign('thread_id')->references('id')->on('threads')->cascadeOnDelete();
-            $table->integer('user_id', )->default(0);
             $table->text('message')->nullable(false);
             $table->string('status', 1)->nullable(false)->default(\App\Enums\MessageStatuses::UNREAD);
             $table->timestamps();

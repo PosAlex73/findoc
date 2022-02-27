@@ -17,7 +17,8 @@ class UserHistoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'description' => $this->faker->text(200)
         ];
     }
 }

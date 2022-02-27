@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Enums\Vacancies\VacancyStatuses;
+use App\Models\Vacancy;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +19,9 @@ class VacancyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->text(20),
+            'text' => $this->faker->text(),
+            'status' => VacancyStatuses::ACTIVE
         ];
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\Reviews\ReviewTypes;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class SpecReviewFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'type' => ReviewTypes::VISIBLE,
+            'rating' => rand(1, 5),
+            'text' => $this->faker->text(200)
         ];
     }
 }
