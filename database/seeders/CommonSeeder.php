@@ -10,6 +10,7 @@ use App\Models\Promotion;
 use App\Models\Thread;
 use App\Models\ThreadMessage;
 use App\Models\User;
+use App\Models\UserHistory;
 use App\Settings\Settings;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -51,6 +52,16 @@ class CommonSeeder extends Seeder
         $threads = new Collection();
         foreach ($users as $user) {
             $threads->add(Thread::factory()->count(1)->for($user)->create());
+            UserHistory::factory()->count(1)->for($user)->create();
+        }
+
+        User::factory()->count(30)->create([
+            'type' => UserTypes::SPEC
+        ]);
+
+        $doctors = User::where('type', UserTypes::SPEC);
+        foreach ($doctors as $doctor) {
+
         }
 
         $threads = Thread::all();
@@ -59,6 +70,9 @@ class CommonSeeder extends Seeder
         }
 
         Category::factory()->count(30)->create();
+
+        $categories = Category::all();
+
         Promotion::factory()->count(30)->create();
         Blog::factory()->count(30)->create();
 
