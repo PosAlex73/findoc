@@ -58,7 +58,7 @@ class Settings
 
     public static function getFileTypes()
     {
-        return [
+        return (object) [
             SettingEnums::FILE, SettingEnums::IMAGE
         ];
     }

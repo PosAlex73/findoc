@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('specs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->text('description');
@@ -25,13 +25,6 @@ return new class extends Migration
             $table->string('phone', 32)->nullable();
             $table->string('address')->nullable();
             $table->string('spec_status', 1)->default(\App\Enums\Specs\SpecStatuses::ACTIVE);
-            $table->timestamps();
-        });
-
-        Schema::create('spec_user', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('specialization_id');
-            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
     }

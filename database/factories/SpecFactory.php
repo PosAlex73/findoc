@@ -18,6 +18,8 @@ class SpecFactory extends Factory
     public function definition()
     {
         return [
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->lastName(),
             'description' => $this->faker->text(50),
             'education' => $this->faker->text(50),
             'experience' => rand(1, 10),

@@ -18,7 +18,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
+        'age',
+        'type',
+        'status',
+        'gender',
         'email',
         'password',
     ];
@@ -59,6 +64,6 @@ class User extends Authenticatable
 
     public function history()
     {
-        return $this->hasOne(UserHistory::class);
+        return $this->hasMany(UserHistory::class);
     }
 }

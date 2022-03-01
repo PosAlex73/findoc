@@ -10,21 +10,12 @@ class Spec extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'description', 'education', 'experience', 'phone', 'address', 'spec_status'
-    ];
-
-    protected $attributes = [
-        'user_id' => 0
+        'first_name', 'last_name', 'category_id', 'description', 'education', 'experience', 'phone', 'address', 'spec_status'
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     public function records()
