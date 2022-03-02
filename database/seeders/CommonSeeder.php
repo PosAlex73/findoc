@@ -14,6 +14,7 @@ use App\Models\SpecReview;
 use App\Models\Thread;
 use App\Models\ThreadMessage;
 use App\Models\User;
+use App\Models\UserDocument;
 use App\Models\UserHistory;
 use App\Models\Vacancy;
 use App\Settings\Settings;
@@ -66,6 +67,7 @@ class CommonSeeder extends Seeder
         foreach ($users as $user) {
             $threads->add(Thread::factory()->count(1)->for($user)->create());
             UserHistory::factory()->count(rand(1, 10))->for($user)->create();
+            UserDocument::factory()->count(rand(1, 5))->for($user)->create();
         }
 
         User::factory()->count(30)->create([
