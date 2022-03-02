@@ -12,4 +12,9 @@ class UserTypes
     public const SIMPLE = 'S';
     public const MODERATOR = 'M';
     public const SPEC = 'D';
+
+    public static function getAdminTypes()
+    {
+        return [self::ADMIN, self::MODERATOR];
+    }
 }
