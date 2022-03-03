@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Front;
-
+namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserHistoryRequest;
 use App\Http\Requests\UpdateUserHistoryRequest;

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class SpecController extends Controller
 {
-    public function view(Request $request, Spec $spec)
+    public function list(Request $request, Spec $spec)
     {
         return view('front.views.doctors.view', [
             'doctor' => $spec

@@ -2,86 +2,20 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserHistoryRequest;
-use App\Http\Requests\UpdateUserHistoryRequest;
 use App\Models\UserHistory;
+use Illuminate\Support\Facades\Auth;
 
 class UserHistoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function history()
     {
-        //
-    }
+        $history = UserHistory::where('id', Auth::user()->id)->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUserHistoryRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreUserHistoryRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\UserHistory  $userHistory
-     * @return \Illuminate\Http\Response
-     */
-    public function show(UserHistory $userHistory)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\UserHistory  $userHistory
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(UserHistory $userHistory)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUserHistoryRequest  $request
-     * @param  \App\Models\UserHistory  $userHistory
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateUserHistoryRequest $request, UserHistory $userHistory)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\UserHistory  $userHistory
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(UserHistory $userHistory)
-    {
-        //
+        return view('front.views.profile.history', [
+            'history' => $history
+        ]);
     }
 }

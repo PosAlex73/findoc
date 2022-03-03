@@ -20,8 +20,8 @@ Route::get('/clinics', [IndexController::class, 'clinics'])->name('front.clinics
 Route::get('/promotions', [IndexController::class, 'promotions'])->name('front.promotions');
 Route::get('/blog', [BlogController::class, 'articles'])->name('front.blog');
 
-Route::get('/doctors/{spec}', [SpecController::class, 'view'])->name('front.doctors.view');
-Route::get('/clinics/{clinic}', [ClinicController::class, 'view'])->name('front.clinics.view');
+Route::get('/doctors/{spec}', [SpecController::class, 'list'])->name('front.doctors.view');
+Route::get('/clinics/{clinic}', [ClinicController::class, 'list'])->name('front.clinics.view');
 Route::get('/appointment/', [AppointmentController::class, 'record'])->name('front.record');
 Route::post('/record', [AppointmentController::class, 'createRecord'])->name('front.new_record');
 Route::get('/blog/{blog}', [BlogController::class, 'view'])->name('front.blog.article');
@@ -32,7 +32,7 @@ Route::prefix('/profile')->middleware(['auth'])->group(function () {
     Route::get('/history', [UserHistoryController::class, 'history'])->name('front.history.list');
 
     Route::get('/notifications', [UserProfileController::class, 'notifications'])->name('front.notifications');
-    Route::delete('/notifications/{notification}', [UserProfileController::class, 'delete_notification'])->name('front.notifications.delete');
+    Route::delete('/notifications/{notification}', [UserProfileController::class, 'deleteNotification'])->name('front.notifications.delete');
 
     Route::get('/records', [AppointmentController::class, 'records'])->name('front.records');
     Route::get('/records/{record}', [AppointmentController::class, 'record'])->name('front.records.view');
