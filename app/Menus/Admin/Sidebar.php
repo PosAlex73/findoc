@@ -8,6 +8,8 @@ class Sidebar implements IMenu
 {
     public static function getMenu(): iterable
     {
-        // TODO: Implement getMenu() method.
+        return [
+            ''
+        ];
     }
 }

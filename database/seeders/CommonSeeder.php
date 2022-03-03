@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Clinic;
 use App\Models\Promotion;
+use App\Models\Service;
 use App\Models\Spec;
 use App\Models\SpecReview;
 use App\Models\Thread;
@@ -86,6 +87,7 @@ class CommonSeeder extends Seeder
         foreach ($categories as $category) {
             Blog::factory()->count(rand(1, 3))->for($category)->create();
             Vacancy::factory()->count(rand(1, 3))->for($category)->create();
+            Service::factory()->count(rand(1, 10))->for($category)->create();
         }
 
         Promotion::factory()->count(30)->create();

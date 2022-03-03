@@ -32,4 +32,9 @@ class Category extends Model
     {
         return $this->belongsToMany(Clinic::class);
     }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

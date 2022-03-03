@@ -8,6 +8,25 @@ class MainToolbar implements IMenu
 {
     public static function getMenu(): iterable
     {
-        // TODO: Implement getMenu() method.
+        return [
+            'front.index' => [
+                'name' => 'front.index'
+            ],
+            'front.services' => [
+                'name' => 'front.services'
+            ],
+            'front.doctors' => [
+                'name' => 'front.doctors'
+            ],
+            'front.clinics' => [
+                'name' => 'front.clinics'
+            ],
+            'promotions' => [
+                'name' => 'front.promotions'
+            ],
+            'front.blog' => [
+                'name' => 'front.blog'
+            ]
+        ];
     }
 }

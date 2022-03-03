@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //custom providers
+        App\Providers\SettingsProvider::class
     ],
 
     /*
@@ -191,7 +193,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // ...
+        'Set' => \App\Facades\Set::class
     ])->toArray(),
 
 ];
