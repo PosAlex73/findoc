@@ -2,86 +2,40 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserDocumentRequest;
 use App\Http\Requests\UpdateUserDocumentRequest;
 use App\Models\UserDocument;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserDocumentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function documents()
     {
-        //
+        $documents = UserDocument::where('user_id', Auth::user()->id)->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+
+        return view('front.views.documents.list');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function storeDocument(StoreUserDocumentRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'notice', 'path']);
+        $user = Auth::user();
+        $user->document()->create($fields);
+
+        $request->session()->flash('status', __('vars.document_was_save'));
+
+        return redirect()->to('front.documents');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreUserDocumentRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreUserDocumentRequest $request)
+    public function deleteDocument(Request $request, UserDocument $document)
     {
-        //
-    }
+        UserDocument::destroy($document);
+        $request->session()->flash('status', __('vars.document_was_delete'));
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\UserDocument  $userDocument
-     * @return \Illuminate\Http\Response
-     */
-    public function show(UserDocument $userDocument)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\UserDocument  $userDocument
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(UserDocument $userDocument)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateUserDocumentRequest  $request
-     * @param  \App\Models\UserDocument  $userDocument
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateUserDocumentRequest $request, UserDocument $userDocument)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\UserDocument  $userDocument
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(UserDocument $userDocument)
-    {
-        //
+        return redirect()->to('front.documents');
     }
 }

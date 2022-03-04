@@ -41,7 +41,7 @@ Route::prefix('/profile')->middleware(['auth'])->group(function () {
     Route::post('/thread/{user}', [ThreadController::class, 'newMessage'])->name('front.thread.new_message');
 
     Route::get('/documents', [UserDocumentController::class, 'documents'])->name('front.documents');
-    Route::post('/documents', [UserDocumentController::class, 'saveDocument'])->name('front.save_document');
+    Route::post('/documents', [UserDocumentController::class, 'storeDocument'])->name('front.save_document');
     Route::delete('/documents/{document}', [UserDocumentController::class, 'deleteDocument'])->name('front.delete_document');
 });
 

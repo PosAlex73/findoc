@@ -11,7 +11,7 @@ class ThreadMessage extends Model
     use HasFactory;
 
     protected $fillable = [
-        'thread_id', 'message', 'status'
+        'message', 'status'
     ];
 
     protected $attributes = [
