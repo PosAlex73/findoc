@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSettingRequest;
-use App\Http\Requests\UpdateSettingRequest;
+use App\Http\Requests\Settings\StoreSettingRequest;
+use App\Http\Requests\Settings\UpdateSettingRequest;
 use App\Models\Setting;
 
 class SettingController extends Controller
@@ -31,7 +31,7 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSettingRequest  $request
+     * @param  \App\Http\Requests\Settings\StoreSettingRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreSettingRequest $request)
@@ -64,7 +64,7 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSettingRequest  $request
+     * @param  \App\Http\Requests\Settings\UpdateSettingRequest  $request
      * @param  \App\Models\Setting  $setting
      * @return \Illuminate\Http\Response
      */

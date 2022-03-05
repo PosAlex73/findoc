@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePromotionRequest;
-use App\Http\Requests\UpdatePromotionRequest;
+use App\Http\Requests\Promotions\StorePromotionRequest;
+use App\Http\Requests\Promotions\UpdatePromotionRequest;
 use App\Models\Promotion;
 
 class PromotionController extends Controller
@@ -31,7 +31,7 @@ class PromotionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePromotionRequest  $request
+     * @param  \App\Http\Requests\Promotions\StorePromotionRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StorePromotionRequest $request)
@@ -64,7 +64,7 @@ class PromotionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePromotionRequest  $request
+     * @param  \App\Http\Requests\Promotions\UpdatePromotionRequest  $request
      * @param  \App\Models\Promotion  $promotion
      * @return \Illuminate\Http\Response
      */

@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Enums\MessageStatuses;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreThreadMessageRequest;
-use App\Http\Requests\StoreThreadRequest;
-use App\Http\Requests\UpdateThreadRequest;
-use App\Models\Thread;
+use App\Http\Requests\Threads\StoreThreadMessageRequest;
 use App\Models\ThreadMessage;
 use App\Models\User;
 

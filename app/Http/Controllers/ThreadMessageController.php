@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreThreadMessageRequest;
-use App\Http\Requests\UpdateThreadMessageRequest;
+use App\Http\Requests\Threads\StoreThreadMessageRequest;
+use App\Http\Requests\Threads\UpdateThreadMessageRequest;
 use App\Models\ThreadMessage;
 
 class ThreadMessageController extends Controller
@@ -31,7 +31,7 @@ class ThreadMessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreThreadMessageRequest  $request
+     * @param  \App\Http\Requests\Threads\StoreThreadMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreThreadMessageRequest $request)
@@ -64,7 +64,7 @@ class ThreadMessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateThreadMessageRequest  $request
+     * @param  \App\Http\Requests\Threads\UpdateThreadMessageRequest  $request
      * @param  \App\Models\ThreadMessage  $threadMessage
      * @return \Illuminate\Http\Response
      */

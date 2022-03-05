@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreRecordsRequest;
-use App\Http\Requests\UpdateRecordsRequest;
+use App\Http\Requests\Users\StoreRecordsRequest;
+use App\Http\Requests\Users\UpdateRecordsRequest;
 use App\Models\Records;
 
 class RecordsController extends Controller
@@ -31,7 +31,7 @@ class RecordsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreRecordsRequest  $request
+     * @param  \App\Http\Requests\Users\StoreRecordsRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRecordsRequest $request)
@@ -64,7 +64,7 @@ class RecordsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateRecordsRequest  $request
+     * @param  \App\Http\Requests\Users\UpdateRecordsRequest  $request
      * @param  \App\Models\Records  $records
      * @return \Illuminate\Http\Response
      */

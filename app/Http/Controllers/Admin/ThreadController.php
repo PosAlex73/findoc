@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreThreadRequest;
-use App\Http\Requests\UpdateThreadRequest;
+use App\Http\Requests\Threads\StoreThreadRequest;
+use App\Http\Requests\Threads\UpdateThreadRequest;
 use App\Models\Thread;
 
 class ThreadController extends Controller
@@ -32,7 +32,7 @@ class ThreadController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreThreadRequest  $request
+     * @param  \App\Http\Requests\Threads\StoreThreadRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreThreadRequest $request)
@@ -65,7 +65,7 @@ class ThreadController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateThreadRequest  $request
+     * @param  \App\Http\Requests\Threads\UpdateThreadRequest  $request
      * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */

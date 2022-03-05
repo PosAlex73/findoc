@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAppointmentRequest;
-use App\Http\Requests\UpdateAppointmentRequest;
+use App\Http\Requests\Users\StoreAppointmentRequest;
+use App\Http\Requests\Users\UpdateAppointmentRequest;
 use App\Models\Appointment;
 
 class AppointmentController extends Controller
@@ -31,7 +31,7 @@ class AppointmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreAppointmentRequest  $request
+     * @param  \App\Http\Requests\Users\StoreAppointmentRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreAppointmentRequest $request)
@@ -64,7 +64,7 @@ class AppointmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateAppointmentRequest  $request
+     * @param  \App\Http\Requests\Users\UpdateAppointmentRequest  $request
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */

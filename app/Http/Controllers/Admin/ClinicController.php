@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreClinicRequest;
-use App\Http\Requests\UpdateClinicRequest;
+use App\Http\Requests\Services\StoreClinicRequest;
+use App\Http\Requests\Services\UpdateClinicRequest;
 use App\Models\Clinic;
 
 class ClinicController extends Controller
@@ -32,7 +32,7 @@ class ClinicController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreClinicRequest  $request
+     * @param  \App\Http\Requests\Services\StoreClinicRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreClinicRequest $request)
@@ -65,7 +65,7 @@ class ClinicController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateClinicRequest  $request
+     * @param  \App\Http\Requests\Services\UpdateClinicRequest  $request
      * @param  \App\Models\Clinic  $clinic
      * @return \Illuminate\Http\Response
      */

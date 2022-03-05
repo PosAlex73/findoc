@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreVacancyRequest;
-use App\Http\Requests\UpdateVacancyRequest;
+use App\Http\Requests\Vacancies\StoreVacancyRequest;
+use App\Http\Requests\Vacancies\UpdateVacancyRequest;
 use App\Models\Vacancy;
 
 class VacancyController extends Controller
@@ -32,7 +32,7 @@ class VacancyController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreVacancyRequest  $request
+     * @param  \App\Http\Requests\Vacancies\StoreVacancyRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreVacancyRequest $request)
@@ -65,7 +65,7 @@ class VacancyController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateVacancyRequest  $request
+     * @param  \App\Http\Requests\Vacancies\UpdateVacancyRequest  $request
      * @param  \App\Models\Vacancy  $vacancy
      * @return \Illuminate\Http\Response
      */

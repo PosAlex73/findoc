@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserHistoryRequest;
-use App\Http\Requests\UpdateUserHistoryRequest;
+use App\Http\Requests\Users\StoreUserHistoryRequest;
+use App\Http\Requests\Users\UpdateUserHistoryRequest;
 use App\Models\UserHistory;
 
 class UserHistoryController extends Controller
@@ -31,7 +31,7 @@ class UserHistoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreUserHistoryRequest  $request
+     * @param  \App\Http\Requests\Users\StoreUserHistoryRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreUserHistoryRequest $request)
@@ -64,7 +64,7 @@ class UserHistoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateUserHistoryRequest  $request
+     * @param  \App\Http\Requests\Users\UpdateUserHistoryRequest  $request
      * @param  \App\Models\UserHistory  $userHistory
      * @return \Illuminate\Http\Response
      */

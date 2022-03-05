@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreBlogRequest;
-use App\Http\Requests\UpdateBlogRequest;
+use App\Http\Requests\Blog\StoreBlogRequest;
+use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog;
 
 class BlogController extends Controller
@@ -31,7 +31,7 @@ class BlogController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBlogRequest  $request
+     * @param  \App\Http\Requests\Blog\StoreBlogRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreBlogRequest $request)
@@ -64,7 +64,7 @@ class BlogController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBlogRequest  $request
+     * @param  \App\Http\Requests\Blog\UpdateBlogRequest  $request
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
