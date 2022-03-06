@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreUserHistoryRequest;
 use App\Http\Requests\Users\UpdateUserHistoryRequest;
+use App\Models\Category;
 use App\Models\UserHistory;
 
 class UserHistoryController extends Controller
@@ -15,7 +18,9 @@ class UserHistoryController extends Controller
      */
     public function index()
     {
-        //
+        $user_histories = UserHistory::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.user_histories.list', ['user_history' => $user_histories]);
     }
 
     /**
@@ -25,7 +30,7 @@ class UserHistoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.user_histories.create');
     }
 
     /**
@@ -36,7 +41,12 @@ class UserHistoryController extends Controller
      */
     public function store(StoreUserHistoryRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description']);
+        $user_history = UserHistory::create($fields);
+
+        $request->session()->flash('status', __('vars.history_was_created'));
+
+        return redirect()->to('user_histories.edit', ['user_history' => $user_history]);
     }
 
     /**
@@ -58,7 +68,8 @@ class UserHistoryController extends Controller
      */
     public function edit(UserHistory $userHistory)
     {
-        //
+        return view('admin.views.user_histories.edit', ['user_history' => $userHistory]);
+
     }
 
     /**
@@ -70,7 +81,12 @@ class UserHistoryController extends Controller
      */
     public function update(UpdateUserHistoryRequest $request, UserHistory $userHistory)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description']);
+        $userHistory->update($fields);
+
+        $request->session()->flash('status', __('vars.history_was_updated'));
+
+        return redirect()->to('user_histories.edit', ['category' => $userHistory]);
     }
 
     /**
@@ -81,6 +97,10 @@ class UserHistoryController extends Controller
      */
     public function destroy(UserHistory $userHistory)
     {
-        //
+        UserHistory::destroy($userHistory->id);
+
+        request()->session()->flash('status', __('vars.history_was_deleted'));
+
+        return redirect()->to('user_histories.index');
     }
 }

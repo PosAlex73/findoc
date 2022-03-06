@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Promotions\StorePromotionRequest;
 use App\Http\Requests\Promotions\UpdatePromotionRequest;
@@ -15,7 +17,9 @@ class PromotionController extends Controller
      */
     public function index()
     {
-        //
+        $promotions = Promotion::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.promotions.list', ['promotions' => $promotions]);
     }
 
     /**
@@ -25,7 +29,7 @@ class PromotionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.promotions.create');
     }
 
     /**
@@ -36,7 +40,12 @@ class PromotionController extends Controller
      */
     public function store(StorePromotionRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $promotion = Promotion::create($fields);
+
+        $request->session()->flash('status', __('vars.promotion_was_created'));
+
+        return redirect()->to('promotions.edit', ['promotion' => $promotion]);
     }
 
     /**
@@ -58,7 +67,7 @@ class PromotionController extends Controller
      */
     public function edit(Promotion $promotion)
     {
-        //
+        return view('admin.views.promotions.edit', ['promotion' => $promotion]);
     }
 
     /**
@@ -70,7 +79,12 @@ class PromotionController extends Controller
      */
     public function update(UpdatePromotionRequest $request, Promotion $promotion)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $promotion->update($fields);
+
+        $request->session()->flash('status', __('vars.promotion_was_created'));
+
+        return redirect()->to('promotions.edit', ['promotion' => $promotion]);
     }
 
     /**
@@ -81,6 +95,10 @@ class PromotionController extends Controller
      */
     public function destroy(Promotion $promotion)
     {
-        //
+        Promotion::destroy($promotion->id);
+
+        request()->session()->flash('status', __('vars.promotion_was_deleted'));
+
+        return redirect()->to('promotions.index');
     }
 }

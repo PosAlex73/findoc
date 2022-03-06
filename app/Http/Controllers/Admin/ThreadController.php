@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Threads\StoreThreadRequest;
 use App\Http\Requests\Threads\UpdateThreadRequest;
 use App\Models\Thread;
 
@@ -14,52 +13,9 @@ class ThreadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\Threads\StoreThreadRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreThreadRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Thread $thread)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Thread $thread)
     {
-        //
+        return view('admin.views.threads.edit', ['thread' => $thread]);
     }
 
     /**
@@ -71,17 +27,11 @@ class ThreadController extends Controller
      */
     public function update(UpdateThreadRequest $request, Thread $thread)
     {
-        //
-    }
+        $fields = $request->safe()->only(['status']);
+        $thread->update($fields);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Thread  $thread
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Thread $thread)
-    {
-        //
+        $request->session()->flash('status', __('vars.thread_was_updated'));
+
+        return redirect()->to('threads.edit');
     }
 }

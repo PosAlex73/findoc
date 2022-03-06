@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\StoreBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
@@ -15,7 +17,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $articles = Blog::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.blog.list', [
+            'articles' => $articles
+        ]);
     }
 
     /**
@@ -25,7 +31,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.blog.create');
     }
 
     /**
@@ -36,7 +42,12 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
+        Blog::create($fields);
+
+        $request->sassion()->flash('status', __('vars.article_was_created'));
+
+        return redirect()->to('blogs.index');
     }
 
     /**
@@ -47,7 +58,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+
     }
 
     /**
@@ -58,7 +69,9 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('admin.views.blog.edit', [
+            'article' => $blog
+        ]);
     }
 
     /**
@@ -70,7 +83,12 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+        $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
+        $blog->update($fields);
+
+        $request->session()->flash('status', __('vars.articles_was_updated'));
+
+        return redirect()->to('blogs.edit', ['blog' => $blog]);
     }
 
     /**
@@ -81,6 +99,9 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        Blog::destroy($blog->id);
+        request()->session()->flash('status', __('vars.articles_was_deleted'));
+
+        return redirect()->to('blogs.index');
     }
 }

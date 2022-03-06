@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Services\StoreClinicRequest;
 use App\Http\Requests\Services\UpdateClinicRequest;
@@ -16,7 +18,9 @@ class ClinicController extends Controller
      */
     public function index()
     {
-        //
+        $clinics = Clinic::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.clinics.list', ['clinics' => $clinics]);
     }
 
     /**
@@ -26,7 +30,7 @@ class ClinicController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.clinics.create');
     }
 
     /**
@@ -37,7 +41,12 @@ class ClinicController extends Controller
      */
     public function store(StoreClinicRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status', 'found', 'phone', 'address']);
+        $clinic = Clinic::create($fields);
+
+        $request->session()->flash('status', __('vars.clinic_was_created'));
+
+        return redirect()->to('clinics.edit', ['clinic' => $clinic]);
     }
 
     /**
@@ -59,7 +68,7 @@ class ClinicController extends Controller
      */
     public function edit(Clinic $clinic)
     {
-        //
+        return view('admin.views.clinics.edit', ['clinic' => $clinic]);
     }
 
     /**
@@ -71,7 +80,12 @@ class ClinicController extends Controller
      */
     public function update(UpdateClinicRequest $request, Clinic $clinic)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status', 'found', 'phone', 'address']);
+        $clinic->update($fields);
+
+        $request->session()->flash('status', __('vars.clinic_was_created'));
+
+        return redirect()->to('clinics.edit', ['clinic' => $clinic]);
     }
 
     /**
@@ -82,6 +96,10 @@ class ClinicController extends Controller
      */
     public function destroy(Clinic $clinic)
     {
-        //
+        Clinic::destroy($clinic->id);
+
+        request()->session()->flash('status', __('vars.clinic_was_deleted'));
+
+        return redirect()->to('clinics.index');
     }
 }

@@ -16,17 +16,7 @@ class SpecReviewController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('admin.views.doctors.list');
     }
 
     /**
@@ -37,41 +27,10 @@ class SpecReviewController extends Controller
      */
     public function store(StoreSpecReviewRequest $request)
     {
-        //
-    }
+        $fields = $request->safe()->only(['user_id', 'type', 'rating', 'text']);
+        SpecReview::create($fields);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\SpecReview  $specReview
-     * @return \Illuminate\Http\Response
-     */
-    public function show(SpecReview $specReview)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SpecReview  $specReview
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SpecReview $specReview)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSpecReviewRequest  $request
-     * @param  \App\Models\SpecReview  $specReview
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSpecReviewRequest $request, SpecReview $specReview)
-    {
-        //
+        return redirect()->to('spec_reviews.index');
     }
 
     /**
@@ -82,6 +41,8 @@ class SpecReviewController extends Controller
      */
     public function destroy(SpecReview $specReview)
     {
-        //
+        SpecReview::destroy($specReview->id);
+
+        return redirect()->to('spec_reviews.index');
     }
 }

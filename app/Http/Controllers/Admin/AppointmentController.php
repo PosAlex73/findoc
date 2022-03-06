@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreAppointmentRequest;
 use App\Http\Requests\Users\UpdateAppointmentRequest;
@@ -15,7 +17,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $records = Appointment::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.records.list', ['records' => $records]);
     }
 
     /**
@@ -25,7 +29,7 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.records.create');
     }
 
     /**
@@ -36,7 +40,12 @@ class AppointmentController extends Controller
      */
     public function store(StoreAppointmentRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['spec_id', 'type', 'datetime', 'text']);
+        $record = Appointment::create($fields);
+
+        $request->session()->flash('status', __('vars.record_was_created'));
+
+        return redirect()->to('appointments.edit', ['record' => $record]);
     }
 
     /**
@@ -56,9 +65,9 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Appointment $appointment)
+    public function edit(Appointment $record)
     {
-        //
+        return view('admin.views.records.edit', ['record' => $record]);
     }
 
     /**
@@ -70,7 +79,12 @@ class AppointmentController extends Controller
      */
     public function update(UpdateAppointmentRequest $request, Appointment $appointment)
     {
-        //
+        $fields = $request->safe()->only(['spec_id', 'type', 'datetime', 'text']);
+        $appointment->update($fields);
+
+        $request->session()->flash('status', __('vars.category_was_updated'));
+
+        return redirect()->to('records.edit', ['record' => $appointment]);
     }
 
     /**
@@ -79,8 +93,12 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(Appointment $record)
     {
-        //
+        Appointment::destroy($record->id);
+
+        request()->session()->flash('status', __('vars.record_was_deleted'));
+
+        return redirect()->to('records.index');
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSpecRequest;
 use App\Http\Requests\UpdateSpecRequest;
@@ -16,7 +18,9 @@ class SpecController extends Controller
      */
     public function index()
     {
-        //
+        $specs = Spec::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.doctors.list', ['doctors' => $specs]);
     }
 
     /**
@@ -26,7 +30,7 @@ class SpecController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.doctors.create');
     }
 
     /**
@@ -37,7 +41,22 @@ class SpecController extends Controller
      */
     public function store(StoreSpecRequest $request)
     {
-        //
+        $fields = $request->safe()->only([
+            'first_name',
+            'last_name',
+            'category_id',
+            'description',
+            'education',
+            'experience',
+            'phone',
+            'address',
+            'spec_status']
+        );
+
+        $doctor = Spec::create($fields);
+        $request->session()->flash('status', __('vars.doctor_was_created'));
+
+        return redirect()->to('specs.edit', ['spec' => $doctor]);
     }
 
     /**
@@ -59,7 +78,7 @@ class SpecController extends Controller
      */
     public function edit(Spec $spec)
     {
-        //
+        return view('admin.views.doctors.edit', ['doctor' => $spec]);
     }
 
     /**
@@ -71,7 +90,12 @@ class SpecController extends Controller
      */
     public function update(UpdateSpecRequest $request, Spec $spec)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $spec->update($fields);
+
+        $request->session()->flash('status', __('vars.doctor_was_updated'));
+
+        return redirect()->to('doctors.edit', ['doctor' => $spec]);
     }
 
     /**
@@ -82,6 +106,10 @@ class SpecController extends Controller
      */
     public function destroy(Spec $spec)
     {
-        //
+        Spec::destroy($spec->id);
+
+        request()->session()->flash('status', __('vars.doctor_was_deleted'));
+
+        return redirect()->to('doctors.index');
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+use App\Enums\Settings\SettingTypes;
+use App\Facades\Set;
 use App\Http\Requests\Services\StoreCategoryRequest;
 use App\Http\Requests\Services\UpdateCategoryRequest;
 use App\Models\Category;
@@ -14,7 +16,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+
+        return view('admin.views.categories.list', ['categories' => $categories]);
     }
 
     /**
@@ -24,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.views.categories.create');
     }
 
     /**
@@ -35,7 +39,12 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $category = Category::create($fields);
+
+        $request->session()->flash('status', __('vars.category_was_created'));
+
+        return redirect()->to('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -57,7 +66,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.views.categories.edit', ['category' => $category]);
     }
 
     /**
@@ -69,7 +78,12 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $category->update($fields);
+
+        $request->session()->flash('status', __('vars.category_was_updated'));
+
+        return redirect()->to('categories.edit', ['category' => $category]);
     }
 
     /**
@@ -80,6 +94,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        Category::destroy($category->id);
+
+        request()->session()->flash('status', __('vars.category_was_deleted'));
+
+        return redirect()->to('categories.index');
     }
 }
