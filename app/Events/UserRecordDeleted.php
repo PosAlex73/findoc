@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Events\Users;
+namespace App\Events;
 
+use App\Models\Appointment;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -10,18 +11,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserRecorded
+class UserRecordDeleted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $record;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Appointment $record)
     {
-        //
+        $this->record = $record;
     }
 
     /**

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Events\Blog;
+namespace App\Events\Users;
 
-use App\Models\Blog;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,20 +10,18 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ArticlePublished
+class UserRecordedCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
-    public $article;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Blog $article)
+    public function __construct()
     {
-        $this->article = $article;
+        //
     }
 
     /**

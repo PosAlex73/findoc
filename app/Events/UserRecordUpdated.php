@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Events\Blog;
+namespace App\Events;
 
-use App\Models\Blog;
+use App\Models\Appointment;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -11,20 +11,20 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ArticlePublished
+class UserRecordUpdated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $article;
+    public $record;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(Blog $article)
+    public function __construct(Appointment $record)
     {
-        $this->article = $article;
+        $this->record = $record;
     }
 
     /**

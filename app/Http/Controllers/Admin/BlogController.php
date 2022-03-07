@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Enums\Settings\SettingTypes;
+use App\Events\Blog\ArticlePublished;
+use App\Events\Users\NewPublished;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\StoreBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Event;
 
 class BlogController extends Controller
 {
@@ -43,9 +46,10 @@ class BlogController extends Controller
     public function store(StoreBlogRequest $request)
     {
         $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
-        Blog::create($fields);
+        $article = Blog::create($fields);
 
         $request->sassion()->flash('status', __('vars.article_was_created'));
+        Event::dispatch(new ArticlePublished($article));
 
         return redirect()->to('blogs.index');
     }
