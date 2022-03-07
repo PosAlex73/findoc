@@ -2,6 +2,7 @@
 
 namespace App\Events\Users;
 
+use App\Models\Appointment;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -14,14 +15,16 @@ class UserRecordedCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $record;
+
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Appointment $record)
     {
-        //
+        $this->record = $record;
     }
 
     /**
