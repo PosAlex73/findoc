@@ -9,7 +9,7 @@ use App\Http\Requests\StoreSpecRequest;
 use App\Http\Requests\UpdateSpecRequest;
 use App\Models\Spec;
 
-class SpecController extends Controller
+class SpecController extends AdminController
 {
     /**
      * Display a listing of the resource.

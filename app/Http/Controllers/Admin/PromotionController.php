@@ -8,7 +8,7 @@ use App\Http\Requests\Promotions\StorePromotionRequest;
 use App\Http\Requests\Promotions\UpdatePromotionRequest;
 use App\Models\Promotion;
 
-class PromotionController extends Controller
+class PromotionController extends AdminController
 {
     /**
      * Display a listing of the resource.

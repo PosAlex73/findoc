@@ -9,7 +9,7 @@ use App\Http\Requests\Services\StoreClinicRequest;
 use App\Http\Requests\Services\UpdateClinicRequest;
 use App\Models\Clinic;
 
-class ClinicController extends Controller
+class ClinicController extends AdminController
 {
     /**
      * Display a listing of the resource.

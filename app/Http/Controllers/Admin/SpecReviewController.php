@@ -7,7 +7,7 @@ use App\Http\Requests\StoreSpecReviewRequest;
 use App\Http\Requests\UpdateSpecReviewRequest;
 use App\Models\SpecReview;
 
-class SpecReviewController extends Controller
+class SpecReviewController extends AdminController
 {
     /**
      * Display a listing of the resource.

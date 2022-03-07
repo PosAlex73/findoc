@@ -9,7 +9,7 @@ use App\Http\Requests\Users\UpdateUserHistoryRequest;
 use App\Models\Category;
 use App\Models\UserHistory;
 
-class UserHistoryController extends Controller
+class UserHistoryController extends AdminController
 {
     /**
      * Display a listing of the resource.

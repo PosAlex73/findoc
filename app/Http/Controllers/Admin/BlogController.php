@@ -11,7 +11,7 @@ use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Event;
 
-class BlogController extends Controller
+class BlogController extends AdminController
 {
     /**
      * Display a listing of the resource.

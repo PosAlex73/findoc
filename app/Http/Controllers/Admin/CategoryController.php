@@ -7,7 +7,7 @@ use App\Http\Requests\Services\StoreCategoryRequest;
 use App\Http\Requests\Services\UpdateCategoryRequest;
 use App\Models\Category;
 
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
     /**
      * Display a listing of the resource.

@@ -1,9 +1,7 @@
 <!-- core:js -->
-<script src="../assets/vendors/core/core.js"></script>
-<!-- endinject -->
 
-<!-- Plugin js for this page -->
-<script src="../assets/vendors/chartjs/Chart.min.js"></script>
+<script src="{{ asset('js/admin/vendors/core/core.js') }}"></script>
+<script src="{{ asset('js/admin/vendors/chartjs/Chart.min.js') }}"></script>
 <script src="../assets/vendors/jquery.flot/jquery.flot.js"></script>
 <script src="../assets/vendors/jquery.flot/jquery.flot.resize.js"></script>
 <script src="../assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>

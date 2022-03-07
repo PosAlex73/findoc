@@ -11,7 +11,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\UserHistoryController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/admin')->middleware(['auth', 'is_admin'])->group(function () {
+//Route::prefix('/admin')->middleware(['auth', 'is_admin'])->group(function () {
+Route::prefix('/admin')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('records', AppointmentController::class);
     Route::resource('blogs', BlogController::class);

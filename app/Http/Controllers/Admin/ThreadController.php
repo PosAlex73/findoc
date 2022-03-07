@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Threads\UpdateThreadRequest;
 use App\Models\Thread;
 
-class ThreadController extends Controller
+class ThreadController extends AdminController
 {
     /**
      * Display a listing of the resource.

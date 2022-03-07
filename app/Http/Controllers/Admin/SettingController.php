@@ -6,7 +6,7 @@ use App\Http\Requests\Settings\StoreSettingRequest;
 use App\Http\Requests\Settings\UpdateSettingRequest;
 use App\Models\Setting;
 
-class SettingController extends Controller
+class SettingController extends AdminController
 {
     /**
      * Display a listing of the resource.
