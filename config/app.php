@@ -178,7 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //custom providers
-        App\Providers\SettingsProvider::class
+        App\Providers\SettingsProvider::class,
+        \App\Providers\ComposerProvider::class
     ],
 
     /*
