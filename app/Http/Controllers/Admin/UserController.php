@@ -18,9 +18,9 @@ class UserController extends AdminController
      */
     public function index()
     {
-        $user = User::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $users = User::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
-        return view('admin.views.users.list', ['user' => $user]);
+        return view('admin.views.users.list', ['users' => $users]);
     }
 
     /**

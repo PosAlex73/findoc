@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ClinicController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PromotionController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\SpecController;
 use App\Http\Controllers\Admin\SpecReviewController;
@@ -28,7 +29,20 @@ Route::prefix('/boss')->group(function () {
     Route::resource('spec_reviews', SpecReviewController::class);
     Route::resource('promotions', PromotionController::class);
     Route::resource('vacancies', VacancyController::class);
-    Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
+    Route::resource('services', ServiceController::class);
+
+
+    Route::delete('/users/mass', [UserController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/records/mass', [AppointmentController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/blogs/mass', [BlogController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/categories/mass', [CategoryController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/clinics/mass', [ClinicController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/specs/mass', [SpecController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/histories/mass', [UserHistoryController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/spec_reviews/mass', [SpecReviewController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/promotions/mass', [PromotionController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/vacancies/mass', [VacancyController::class, 'massDelete'])->name('users.mass_delete');
+    Route::delete('/services/mass', [ServiceController::class, 'massDelete'])->name('users.mass_delete');
 
     //threads
     Route::get('/threads', [\App\Http\Controllers\Admin\ThreadController::class, 'index'])->name('threads.index');
