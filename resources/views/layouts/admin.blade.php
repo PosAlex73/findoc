@@ -5,11 +5,10 @@
 <body>
 <div class="main-wrapper">
     @include('components.admin.sidebar')
-    @yield('content')
     <div class="page-wrapper">
         @include('components.admin.navbar')
         <div class="page-content">
-
+            @yield('content')
         </div>
     @include('components.admin.footer')
     </div>
