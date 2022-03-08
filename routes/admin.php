@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 //Route::prefix('/admin')->middleware(['auth', 'is_admin'])->group(function () {
 Route::prefix('/boss')->group(function () {
-    Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
     Route::resource('users', UserController::class);
     Route::resource('records', AppointmentController::class);
@@ -28,6 +28,11 @@ Route::prefix('/boss')->group(function () {
     Route::resource('spec_reviews', SpecReviewController::class);
     Route::resource('promotions', PromotionController::class);
     Route::resource('vacancies', VacancyController::class);
+    Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class);
+
+    //threads
+    Route::get('/threads', [\App\Http\Controllers\Admin\ThreadController::class, 'index'])->name('threads.index');
+    Route::get('/documents', [\App\Http\Controllers\Admin\DocumentController::class, 'index'])->name('documents.index');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');

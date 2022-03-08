@@ -8,7 +8,6 @@
     <div class="page-wrapper">
         @include('components.admin.navbar')
         <div class="page-content">
-            <x-admin.bread-crumbs />
             @yield('content')
         </div>
     @include('components.admin.footer')

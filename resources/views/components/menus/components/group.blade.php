@@ -8,7 +8,7 @@
         <ul class="nav sub-menu">
             @foreach($item->group as $group)
                 <li class="nav-item">
-                    <a href="{{ $group }}" class="nav-link">{{ __('vars.' . $group) }}</a>
+                    <a href="{{ route($group) }}" class="nav-link">{{ __('vars.' . $group) }}</a>
                 </li>
             @endforeach
         </ul>
