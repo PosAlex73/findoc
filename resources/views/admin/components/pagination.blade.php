@@ -33,7 +33,7 @@
                                class="page-link">{{ __($items->currentPage() + 1) }}
                             </a>
                         </li>
-                    <li class="paginate_button page-item next @if($items->onLastPage()) disabled @endif" id="dataTableExample_next">
+                    <li class="paginate_button page-item next" id="dataTableExample_next">
                         <a href="{{ route('users.index') . '?page=' . $items->lastPage() }}"
                            aria-controls="dataTableExample"
                            data-dt-idx="4"
