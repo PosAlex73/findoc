@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Services;
 
+use App\Enums\Specs\ClinicStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreClinicRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreClinicRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,12 @@ class StoreClinicRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required',
+            'description' => 'required',
+            'status' => ['required', Rule::in(ClinicStatuses::getAll())],
+            'found' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
         ];
     }
 }

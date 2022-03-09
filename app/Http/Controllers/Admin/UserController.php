@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\Users\StoreUserRequest;
+use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\User;
 
 class UserController extends AdminController

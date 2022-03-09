@@ -24,7 +24,10 @@ class UpdateBlogRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'min:2', 'max:255'],
+            'text' => 'required',
+            'status' => 'required',
+            'category_id' => 'required|exists:categories,id'
         ];
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Threads;
 
+use App\Enums\MessageStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateThreadMessageRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateThreadMessageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,9 @@ class UpdateThreadMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'message' => 'required',
+            'status' => ['required', Rule::in(MessageStatuses::getAll())],
+            'thread_id' => ['required', 'exists:threads,id']
         ];
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\Specs\SpecStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateSpecRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class UpdateSpecRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,13 @@ class UpdateSpecRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'category_id' => 'required|exists:categories,id',
+            'description' => 'required',
+            'education' => 'required',
+            'experience' => 'required',
+            'spec_status' => ['required', Rule::in(SpecStatuses::getAll())]
         ];
     }
 }

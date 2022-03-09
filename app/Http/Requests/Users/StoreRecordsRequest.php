@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\Users;
 
+use App\Enums\CommonStatuses;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRecordsRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class StoreRecordsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +26,9 @@ class StoreRecordsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'spec_id' => 'required|exists:specs,id',
+            'type' => ['required', Rule::in(CommonStatuses::getAll())],
+            'datetime' => 'required',
         ];
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Requests\Promotions;
+namespace App\Http\Requests\Users;
 
-use App\Enums\Promo\PromoStatuses;
+use App\Enums\User\Gender;
+use App\Enums\User\UserStatuses;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdatePromotionRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +27,12 @@ class UpdatePromotionRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:2:max:255',
-            'description' => 'required',
-            'status' => ['required', Rule::in(PromoStatuses::getAll())]
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'age' => 'required',
+            'gender' => ['required', Rule::in(Gender::getAll())],
+            'status' => ['required', Rule::in(UserStatuses::getAll())],
+            'email' - 'required|email'
         ];
     }
 }
