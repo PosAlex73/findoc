@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.noauth')
 @section('content')
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
@@ -34,11 +34,7 @@
                                                 </label>
                                             </div>
                                             <div>
-                                                <a href="../../dashboard.html" class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</a>
-                                                <button type="button" class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                                                    <i class="btn-icon-prepend" data-feather="twitter"></i>
-                                                    Login with twitter
-                                                </button>
+                                                <button class="btn btn-primary me-2 mb-2 mb-md-0 text-white">{{ __('vars.login') }}</button>
                                             </div>
                                             <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign up</a>
                                         </form>

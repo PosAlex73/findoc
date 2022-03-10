@@ -45,7 +45,7 @@ class VacancyController extends AdminController
 
         $request->session()->flash('status', __('vars.vacancy_was_created'));
 
-        return redirect()->to('vacancies.edit', ['vacancy' => $vacancy]);
+        return redirect()->to(route('vacancies.edit', ['vacancy' => $vacancy]));
     }
 
     /**
@@ -84,7 +84,7 @@ class VacancyController extends AdminController
 
         $request->session()->flash('status', __('vars.vacancy_was_updated'));
 
-        return redirect()->to('vacancies.edit', ['vacancy' => $vacancy]);
+        return redirect()->to(route('vacancies.edit', ['vacancy' => $vacancy]));
     }
 
     /**
@@ -99,6 +99,6 @@ class VacancyController extends AdminController
 
         request()->session()->flash('status', __('vars.vacancy_was_deleted'));
 
-        return redirect()->to('vacancies.index');
+        return redirect()->to(route('vacancies.index'));
     }
 }

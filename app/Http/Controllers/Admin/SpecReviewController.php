@@ -30,7 +30,7 @@ class SpecReviewController extends AdminController
         $fields = $request->safe()->only(['user_id', 'type', 'rating', 'text']);
         SpecReview::create($fields);
 
-        return redirect()->to('spec_reviews.index');
+        return redirect()->to(route('spec_reviews.index'));
     }
 
     /**
@@ -43,6 +43,6 @@ class SpecReviewController extends AdminController
     {
         SpecReview::destroy($specReview->id);
 
-        return redirect()->to('spec_reviews.index');
+        return redirect()->to(route('spec_reviews.index'));
     }
 }

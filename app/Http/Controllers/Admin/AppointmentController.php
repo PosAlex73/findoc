@@ -45,7 +45,7 @@ class AppointmentController extends AdminController
 
         $request->session()->flash('status', __('vars.record_was_created'));
 
-        return redirect()->to('appointments.edit', ['record' => $record]);
+        return redirect()->to(route('appointments.edit', ['record' => $record]));
     }
 
     /**
@@ -84,7 +84,7 @@ class AppointmentController extends AdminController
 
         $request->session()->flash('status', __('vars.category_was_updated'));
 
-        return redirect()->to('records.edit', ['record' => $appointment]);
+        return redirect()->to(route('records.edit', ['record' => $appointment]));
     }
 
     /**
@@ -99,6 +99,6 @@ class AppointmentController extends AdminController
 
         request()->session()->flash('status', __('vars.record_was_deleted'));
 
-        return redirect()->to('records.index');
+        return redirect()->to(route('records.index'));
     }
 }

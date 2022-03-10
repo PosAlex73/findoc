@@ -45,7 +45,7 @@ class PromotionController extends AdminController
 
         $request->session()->flash('status', __('vars.promotion_was_created'));
 
-        return redirect()->to('promotions.edit', ['promotion' => $promotion]);
+        return redirect()->to(route('promotions.edit', ['promotion' => $promotion]));
     }
 
     /**
@@ -84,7 +84,7 @@ class PromotionController extends AdminController
 
         $request->session()->flash('status', __('vars.promotion_was_created'));
 
-        return redirect()->to('promotions.edit', ['promotion' => $promotion]);
+        return redirect()->to(route('promotions.edit', ['promotion' => $promotion]));
     }
 
     /**
@@ -99,6 +99,6 @@ class PromotionController extends AdminController
 
         request()->session()->flash('status', __('vars.promotion_was_deleted'));
 
-        return redirect()->to('promotions.index');
+        return redirect()->to(route('promotions.index'));
     }
 }

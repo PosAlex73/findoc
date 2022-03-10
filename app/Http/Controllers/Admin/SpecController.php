@@ -56,7 +56,7 @@ class SpecController extends AdminController
         $doctor = Spec::create($fields);
         $request->session()->flash('status', __('vars.doctor_was_created'));
 
-        return redirect()->to('specs.edit', ['spec' => $doctor]);
+        return redirect()->to(route('specs.edit', ['spec' => $doctor]));
     }
 
     /**
@@ -95,7 +95,7 @@ class SpecController extends AdminController
 
         $request->session()->flash('status', __('vars.doctor_was_updated'));
 
-        return redirect()->to('doctors.edit', ['doctor' => $spec]);
+        return redirect()->to(route('doctors.edit', ['doctor' => $spec]));
     }
 
     /**
@@ -110,6 +110,6 @@ class SpecController extends AdminController
 
         request()->session()->flash('status', __('vars.doctor_was_deleted'));
 
-        return redirect()->to('doctors.index');
+        return redirect()->to(route('doctors.index'));
     }
 }

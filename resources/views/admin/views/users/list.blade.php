@@ -2,11 +2,11 @@
 @section('content')
     <form action="{{ route('users.mass_delete') }}" method="post">
         @csrf
-        @method('DELETE')
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
-                @include('admin.components.back_button', ['route' => 'dashboard'])
-                @include('admin.components.mass_delete')
+                @include('admin.components.buttons.back_button', ['route' => 'dashboard'])
+                @include('admin.components.buttons.create_new', ['item' => 'users'])
+                @include('admin.components.buttons.mass_delete')
             </div>
         </div>
         <div class="row">

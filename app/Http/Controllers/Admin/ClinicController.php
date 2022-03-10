@@ -46,7 +46,7 @@ class ClinicController extends AdminController
 
         $request->session()->flash('status', __('vars.clinic_was_created'));
 
-        return redirect()->to('clinics.edit', ['clinic' => $clinic]);
+        return redirect()->to(route('clinics.edit', ['clinic' => $clinic]));
     }
 
     /**
@@ -85,7 +85,7 @@ class ClinicController extends AdminController
 
         $request->session()->flash('status', __('vars.clinic_was_created'));
 
-        return redirect()->to('clinics.edit', ['clinic' => $clinic]);
+        return redirect()->to(route('clinics.edit', ['clinic' => $clinic]));
     }
 
     /**
@@ -100,6 +100,6 @@ class ClinicController extends AdminController
 
         request()->session()->flash('status', __('vars.clinic_was_deleted'));
 
-        return redirect()->to('clinics.index');
+        return redirect()->to(route('clinics.index'));
     }
 }

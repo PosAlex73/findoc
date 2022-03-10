@@ -51,7 +51,7 @@ class BlogController extends AdminController
         $request->sassion()->flash('status', __('vars.article_was_created'));
         Event::dispatch(new ArticlePublished($article));
 
-        return redirect()->to('blogs.index');
+        return redirect()->to(route('blogs.index'));
     }
 
     /**
@@ -92,7 +92,7 @@ class BlogController extends AdminController
 
         $request->session()->flash('status', __('vars.articles_was_updated'));
 
-        return redirect()->to('blogs.edit', ['blog' => $blog]);
+        return redirect()->to(route('blogs.edit', ['blog' => $blog]));
     }
 
     /**
@@ -106,6 +106,6 @@ class BlogController extends AdminController
         Blog::destroy($blog->id);
         request()->session()->flash('status', __('vars.articles_was_deleted'));
 
-        return redirect()->to('blogs.index');
+        return redirect()->to(route('blogs.index'));
     }
 }

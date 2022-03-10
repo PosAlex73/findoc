@@ -44,7 +44,7 @@ class CategoryController extends AdminController
 
         $request->session()->flash('status', __('vars.category_was_created'));
 
-        return redirect()->to('categories.edit', ['category' => $category]);
+        return redirect()->to(route('categories.edit', ['category' => $category]));
     }
 
     /**
@@ -83,7 +83,7 @@ class CategoryController extends AdminController
 
         $request->session()->flash('status', __('vars.category_was_updated'));
 
-        return redirect()->to('categories.edit', ['category' => $category]);
+        return redirect()->to(route('categories.edit', ['category' => $category]));
     }
 
     /**
@@ -98,6 +98,6 @@ class CategoryController extends AdminController
 
         request()->session()->flash('status', __('vars.category_was_deleted'));
 
-        return redirect()->to('categories.index');
+        return redirect()->to(route('categories.index'));
     }
 }

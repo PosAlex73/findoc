@@ -46,7 +46,7 @@ class UserHistoryController extends AdminController
 
         $request->session()->flash('status', __('vars.history_was_created'));
 
-        return redirect()->to('user_histories.edit', ['user_history' => $user_history]);
+        return redirect()->to(route('user_histories.edit', ['user_history' => $user_history]));
     }
 
     /**
@@ -86,7 +86,7 @@ class UserHistoryController extends AdminController
 
         $request->session()->flash('status', __('vars.history_was_updated'));
 
-        return redirect()->to('user_histories.edit', ['category' => $userHistory]);
+        return redirect()->to(route('user_histories.edit', ['category' => $userHistory]));
     }
 
     /**
@@ -101,6 +101,6 @@ class UserHistoryController extends AdminController
 
         request()->session()->flash('status', __('vars.history_was_deleted'));
 
-        return redirect()->to('user_histories.index');
+        return redirect()->to(route('user_histories.index'));
     }
 }
