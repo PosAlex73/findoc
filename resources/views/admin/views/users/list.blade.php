@@ -9,6 +9,7 @@
                 @include('admin.components.buttons.mass_delete')
             </div>
         </div>
+        @includeWhen(!empty(session('status')), 'admin.flash.flashs', ['message' => session('status')])
         <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">

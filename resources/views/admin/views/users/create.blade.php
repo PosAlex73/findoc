@@ -8,6 +8,7 @@
                 @include('admin.components.buttons.submit')
             </div>
         </div>
+        @include('admin.flash.errors')
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ __('vars.crea_new_user') }}</h5>

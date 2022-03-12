@@ -9,7 +9,7 @@
                 @include('admin.components.buttons.submit')
             </div>
         </div>
-        @includeIf(session('status'), ['status' => session('status')])
+        @includeWhen(!empty(session('status')), 'admin.flash.flashs', ['message' => session('status')])
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ $user->full_name }}</h5>
