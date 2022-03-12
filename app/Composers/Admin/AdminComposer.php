@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Composers;
+namespace App\Composers\Admin;
 
 use App\Enums\User\UserStatuses;
 use App\Enums\User\UserTypes;

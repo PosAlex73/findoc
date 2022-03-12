@@ -32,7 +32,7 @@ class UpdateUserRequest extends FormRequest
             'age' => 'required',
             'gender' => ['required', Rule::in(Gender::getAll())],
             'status' => ['required', Rule::in(UserStatuses::getAll())],
-            'email' - 'required|email'
+            'email' => 'required|email'
         ];
     }
 }

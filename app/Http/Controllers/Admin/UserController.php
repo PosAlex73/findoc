@@ -8,6 +8,7 @@ use App\Http\Requests\Users\StoreUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends AdminController
 {
@@ -45,8 +46,10 @@ class UserController extends AdminController
             'email',
         ]);
 
+        //FIXME
+        //get password check
+        $fields['password'] = Hash::make($request->get('password'));
         $user = User::create($fields);
-
         $request->session()->flash('status', __('vars.user_was_created'));
 
         return redirect()->to(route('users.edit', ['user' => $user]));
@@ -70,7 +73,6 @@ class UserController extends AdminController
         ]);
 
         $user->update($fields);
-
         $request->session()->flash('status', __('vars.user_was_updated'));
 
         return redirect()->to(route('users.edit', ['user' => $user]));
