@@ -18,9 +18,9 @@ class UserHistoryController extends AdminController
      */
     public function index()
     {
-        $user_histories = UserHistory::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $user_histories = UserHistory::with('user')->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
-        return view('admin.views.user_histories.list', ['user_history' => $user_histories]);
+        return view('admin.views.user_histories.list', ['user_histories' => $user_histories]);
     }
 
     /**
