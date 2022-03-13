@@ -5,7 +5,9 @@ use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreAppointmentRequest;
+use App\Http\Requests\Users\StoreRecordsRequest;
 use App\Http\Requests\Users\UpdateAppointmentRequest;
+use App\Http\Requests\Users\UpdateRecordsRequest;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 
@@ -18,7 +20,7 @@ class AppointmentController extends AdminController
      */
     public function index()
     {
-        $records = Appointment::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $records = Appointment::with(['user', 'spec'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.views.records.list', ['records' => $records]);
     }
@@ -39,14 +41,14 @@ class AppointmentController extends AdminController
      * @param  \App\Http\Requests\Users\StoreAppointmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAppointmentRequest $request)
+    public function store(StoreRecordsRequest $request)
     {
-        $fields = $request->safe()->only(['spec_id', 'type', 'datetime', 'text']);
+        $fields = $request->safe()->only(['user_id', 'spec_id', 'type', 'datetime', 'text']);
         $record = Appointment::create($fields);
 
         $request->session()->flash('status', __('vars.record_was_created'));
 
-        return redirect()->to(route('appointments.edit', ['record' => $record]));
+        return redirect()->to(route('records.edit', ['record' => $record]));
     }
 
     /**
@@ -78,7 +80,7 @@ class AppointmentController extends AdminController
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAppointmentRequest $request, Appointment $appointment)
+    public function update(UpdateRecordsRequest $request, Appointment $appointment)
     {
         $fields = $request->safe()->only(['spec_id', 'type', 'datetime', 'text']);
         $appointment->update($fields);

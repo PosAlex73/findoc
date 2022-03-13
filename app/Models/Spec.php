@@ -27,4 +27,9 @@ class Spec extends Model
     {
         return $this->hasMany(SpecExp::class);
     }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->lastname;
+    }
 }

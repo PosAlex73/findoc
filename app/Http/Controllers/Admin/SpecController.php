@@ -19,7 +19,7 @@ class SpecController extends AdminController
      */
     public function index()
     {
-        $specs = Spec::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $specs = Spec::with(['users', 'specs'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.views.doctors.list', ['doctors' => $specs]);
     }

@@ -6,6 +6,7 @@ use App\BreadCrumbs\BreadCrumbs;
 use App\Composers\Admin\AdminComposer;
 use App\Composers\Admin\SimpleUserComposer;
 use App\Composers\Admin\UserComposer;
+use App\Composers\Common\DoctorComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -38,5 +39,12 @@ class ComposerProvider extends ServiceProvider
             'admin.views.records.create'
             ],
             SimpleUserComposer::class);
+
+        View::composer(
+            [
+                'admin.views.records.create',
+                'admin.views.records.edit'
+            ],
+            DoctorComposer::class);
     }
 }

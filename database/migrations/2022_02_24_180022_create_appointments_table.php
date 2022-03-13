@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->unsignedBigInteger('spec_id');
             $table->string('type', 1)->nullable(false)->default(\App\Enums\Specs\RecordType::SPEC);
-            $table->dateTime('datetime');
+            $table->timestamp('datetime');
             $table->text('text');
             $table->timestamps();
         });
