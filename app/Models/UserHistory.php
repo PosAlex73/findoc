@@ -10,7 +10,7 @@ class UserHistory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description'
+        'title', 'description', 'user_id'
     ];
 
     public function user()

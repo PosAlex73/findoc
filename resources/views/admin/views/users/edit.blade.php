@@ -9,6 +9,7 @@
                 @include('admin.components.buttons.submit')
             </div>
         </div>
+        @include('admin.flash.errors')
         @includeWhen(!empty(session('status')), 'admin.flash.flashs', ['message' => session('status')])
         <div class="card">
             <div class="card-body">

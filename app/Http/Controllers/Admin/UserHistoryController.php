@@ -42,12 +42,12 @@ class UserHistoryController extends AdminController
      */
     public function store(StoreUserHistoryRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'description']);
+        $fields = $request->safe()->only(['title', 'description', 'user_id']);
         $user_history = UserHistory::create($fields);
 
         $request->session()->flash('status', __('vars.history_was_created'));
 
-        return redirect()->to(route('user_histories.edit', ['user_history' => $user_history]));
+        return redirect()->to(route('histories.edit', ['history' => $user_history]));
     }
 
     /**
@@ -67,10 +67,9 @@ class UserHistoryController extends AdminController
      * @param  \App\Models\UserHistory  $userHistory
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserHistory $userHistory)
+    public function edit(UserHistory $history)
     {
-        return view('admin.views.user_histories.edit', ['user_history' => $userHistory]);
-
+        return view('admin.views.user_histories.edit', ['history' => $history]);
     }
 
     /**
@@ -80,14 +79,14 @@ class UserHistoryController extends AdminController
      * @param  \App\Models\UserHistory  $userHistory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserHistoryRequest $request, UserHistory $userHistory)
+    public function update(UpdateUserHistoryRequest $request, UserHistory $history)
     {
         $fields = $request->safe()->only(['title', 'description']);
-        $userHistory->update($fields);
+        $history->update($fields);
 
         $request->session()->flash('status', __('vars.history_was_updated'));
 
-        return redirect()->to(route('user_histories.edit', ['category' => $userHistory]));
+        return redirect()->to(route('histories.edit', ['history' => $history]));
     }
 
     /**
@@ -96,13 +95,13 @@ class UserHistoryController extends AdminController
      * @param  \App\Models\UserHistory  $userHistory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserHistory $userHistory)
+    public function destroy(UserHistory $history)
     {
-        UserHistory::destroy($userHistory->id);
+        UserHistory::destroy($history->id);
 
         request()->session()->flash('status', __('vars.history_was_deleted'));
 
-        return redirect()->to(route('user_histories.index'));
+        return redirect()->to(route('histories.index'));
     }
 
     public function massDelete(Request $request)

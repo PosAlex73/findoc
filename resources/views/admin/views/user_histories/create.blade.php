@@ -13,6 +13,8 @@
             <div class="card-body">
                 <h5 class="card-title">{{ __('vars.create_new') }}</h5>
                 @include('admin.fields.input', ['name' => 'title'])
+                @include('admin.fields.textarea', ['name' => 'description'])
+                @include('admin.fields.user_select', ['users' => $simple_users])
             </div>
         </div>
     </form>

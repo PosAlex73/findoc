@@ -25,7 +25,8 @@ class StoreUserHistoryRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'user_id' => 'required|exists:users,id'
         ];
     }
 }

@@ -40,7 +40,7 @@
                                             <input
                                                 type="checkbox"
                                                 class="form-check-input"
-                                                name="users[]"
+                                                name="histories[]"
                                                 value="{{ $history->id }}"
                                                 id="{{ $history->id }}"
                                             >
