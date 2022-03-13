@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Blog\StoreBlogRequest;
 use App\Http\Requests\Blog\UpdateBlogRequest;
 use App\Models\Blog;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
 
 class BlogController extends AdminController
@@ -105,6 +106,15 @@ class BlogController extends AdminController
     {
         Blog::destroy($blog->id);
         request()->session()->flash('status', __('vars.articles_was_deleted'));
+
+        return redirect()->to(route('blogs.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('articles');
+        Blog::destroy($ids);
+        $request->session()->flash('status', __('vars.articles_were_deleted'));
 
         return redirect()->to(route('blogs.index'));
     }

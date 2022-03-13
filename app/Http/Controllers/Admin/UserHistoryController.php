@@ -8,6 +8,7 @@ use App\Http\Requests\Users\StoreUserHistoryRequest;
 use App\Http\Requests\Users\UpdateUserHistoryRequest;
 use App\Models\Category;
 use App\Models\UserHistory;
+use Illuminate\Http\Request;
 
 class UserHistoryController extends AdminController
 {
@@ -102,5 +103,15 @@ class UserHistoryController extends AdminController
         request()->session()->flash('status', __('vars.history_was_deleted'));
 
         return redirect()->to(route('user_histories.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('histories');
+        UserHistory::destroy($ids);
+
+        $request->session()->flash('status', __('vars.histories_were_deleted'));
+
+        return redirect()->to(route('histories.index'));
     }
 }

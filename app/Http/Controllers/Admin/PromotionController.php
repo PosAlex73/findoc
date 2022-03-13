@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Promotions\StorePromotionRequest;
 use App\Http\Requests\Promotions\UpdatePromotionRequest;
 use App\Models\Promotion;
+use Illuminate\Http\Request;
 
 class PromotionController extends AdminController
 {
@@ -98,6 +99,15 @@ class PromotionController extends AdminController
         Promotion::destroy($promotion->id);
 
         request()->session()->flash('status', __('vars.promotion_was_deleted'));
+
+        return redirect()->to(route('promotions.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('promotions');
+        Promotion::destroy($ids);
+        $request->session()->flash('status', __('vars.promotions_were_deleted'));
 
         return redirect()->to(route('promotions.index'));
     }

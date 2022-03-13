@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSpecRequest;
 use App\Http\Requests\UpdateSpecRequest;
 use App\Models\Spec;
+use Illuminate\Http\Request;
 
 class SpecController extends AdminController
 {
@@ -111,5 +112,15 @@ class SpecController extends AdminController
         request()->session()->flash('status', __('vars.doctor_was_deleted'));
 
         return redirect()->to(route('doctors.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('specs');
+        Spec::destroy($ids);
+
+        $request->session()->flash('status', __('vars.specs_were_deleted'));
+
+        return redirect()->to(route('specs.index'));
     }
 }

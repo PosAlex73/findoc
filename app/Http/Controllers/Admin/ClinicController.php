@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Services\StoreClinicRequest;
 use App\Http\Requests\Services\UpdateClinicRequest;
 use App\Models\Clinic;
+use Illuminate\Http\Request;
 
 class ClinicController extends AdminController
 {
@@ -99,6 +100,15 @@ class ClinicController extends AdminController
         Clinic::destroy($clinic->id);
 
         request()->session()->flash('status', __('vars.clinic_was_deleted'));
+
+        return redirect()->to(route('clinics.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('clinics');
+        Clinic::destroy($ids);
+        $request->session()->flash('status', __('vars.clinics_were_deleted'));
 
         return redirect()->to(route('clinics.index'));
     }

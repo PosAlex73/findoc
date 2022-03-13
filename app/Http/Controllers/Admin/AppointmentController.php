@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreAppointmentRequest;
 use App\Http\Requests\Users\UpdateAppointmentRequest;
 use App\Models\Appointment;
+use Illuminate\Http\Request;
 
 class AppointmentController extends AdminController
 {
@@ -98,6 +99,15 @@ class AppointmentController extends AdminController
         Appointment::destroy($record->id);
 
         request()->session()->flash('status', __('vars.record_was_deleted'));
+
+        return redirect()->to(route('records.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('records');
+        Appointment::destroy($ids);
+        $request->session()->flash('status', __('vars.records_were_deleted'));
 
         return redirect()->to(route('records.index'));
     }

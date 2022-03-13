@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSpecReviewRequest;
 use App\Http\Requests\UpdateSpecReviewRequest;
 use App\Models\SpecReview;
+use Illuminate\Http\Request;
 
 class SpecReviewController extends AdminController
 {
@@ -42,6 +43,16 @@ class SpecReviewController extends AdminController
     public function destroy(SpecReview $specReview)
     {
         SpecReview::destroy($specReview->id);
+
+        return redirect()->to(route('spec_reviews.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('reviews');
+        SpecReview::destroy($ids);
+
+        $request->session()->flash('status', __('vars.reviews_were_deleted'));
 
         return redirect()->to(route('spec_reviews.index'));
     }

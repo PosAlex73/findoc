@@ -6,6 +6,7 @@ use App\Facades\Set;
 use App\Http\Requests\Services\StoreCategoryRequest;
 use App\Http\Requests\Services\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends AdminController
 {
@@ -97,6 +98,15 @@ class CategoryController extends AdminController
         Category::destroy($category->id);
 
         request()->session()->flash('status', __('vars.category_was_deleted'));
+
+        return redirect()->to(route('categories.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('clinics');
+        Category::destroy($ids);
+        $request->session()->flash('status', __('vars.categories_were_deleted'));
 
         return redirect()->to(route('categories.index'));
     }
