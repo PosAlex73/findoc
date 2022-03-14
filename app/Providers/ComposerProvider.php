@@ -36,7 +36,8 @@ class ComposerProvider extends ServiceProvider
         View::composer([
             'admin.views.user_histories.create',
             'admin.views.documents.create',
-            'admin.views.records.create'
+            'admin.views.records.create',
+            'admin.views.records.edit'
             ],
             SimpleUserComposer::class);
 

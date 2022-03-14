@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('records.edit', ['record' => $record]) }}" method="post">
+    <form action="{{ route('records.update', ['record' => $record]) }}" method="post">
         @csrf
         @method('PUT')
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">

@@ -80,14 +80,16 @@ class AppointmentController extends AdminController
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRecordsRequest $request, Appointment $appointment)
+    public function update(UpdateRecordsRequest $request, Appointment $record)
     {
-        $fields = $request->safe()->only(['spec_id', 'type', 'datetime', 'text']);
-        $appointment->update($fields);
+        $fields = $request->safe()->only(['user_id', 'spec_id', 'type', 'datetime', 'text']);
+        dd($fields);
+        $fields['datetime'] = new \DateTime($fields['datetime']);
+        $record = Appointment::where('id', $record->id)->update($fields);
 
         $request->session()->flash('status', __('vars.category_was_updated'));
 
-        return redirect()->to(route('records.edit', ['record' => $appointment]));
+        return redirect()->to(route('records.edit', ['record' => $record]));
     }
 
     /**
