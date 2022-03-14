@@ -13,10 +13,10 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">{{ __('vars.update_record') }}</h5>
+                <p>{{ $record->datetime }}</p>
                 @include('admin.fields.textarea', ['name' => 'text', 'value' => $record->text])
                 @include('admin.fields.user_select', ['users' => $doctors, 'field_name' => 'spec_id', 'selected' => $record->spec_id])
                 @include('admin.fields.user_select', ['users' => $simple_users])
-                @include('admin.fields.date', ['name' => 'datetime'])
                 @include('admin.fields.select', ['name' => 'type', 'variants' => $record_types])
             </div>
         </div>

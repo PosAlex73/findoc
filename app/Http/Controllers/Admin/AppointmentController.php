@@ -83,9 +83,8 @@ class AppointmentController extends AdminController
     public function update(UpdateRecordsRequest $request, Appointment $record)
     {
         $fields = $request->safe()->only(['user_id', 'spec_id', 'type', 'datetime', 'text']);
-        dd($fields);
-        $fields['datetime'] = new \DateTime($fields['datetime']);
-        $record = Appointment::where('id', $record->id)->update($fields);
+        $fields['datetime'] = (new \DateTime($fields['datetime']))->format('Y-m-d G:i:s');
+        $record->update($fields);
 
         $request->session()->flash('status', __('vars.category_was_updated'));
 

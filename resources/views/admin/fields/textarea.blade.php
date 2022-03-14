@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <label for="{{ $name }}" class="form-label">{{ $value ?? '' }}</label>
+    <label for="{{ $name }}" class="form-label">{{ __('vars.' . $name) ?? '' }}</label>
     <textarea
         class="form-control"
         id="{{ $name }}"
