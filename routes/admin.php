@@ -34,6 +34,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::resource('promotions', PromotionController::class);
     Route::resource('vacancies', VacancyController::class);
     Route::resource('services', ServiceController::class);
+    Route::resource('documents', DocumentController::class);
 
 
     Route::post('/users/mass', [UserController::class, 'massDelete'])->name('users.mass_delete');
@@ -47,10 +48,10 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::post('/promotions/mass', [PromotionController::class, 'massDelete'])->name('promotions.mass_delete');
     Route::post('/vacancies/mass', [VacancyController::class, 'massDelete'])->name('vacancies.mass_delete');
     Route::post('/services/mass', [ServiceController::class, 'massDelete'])->name('services.mass_delete');
+    Route::post('/documents/mass', [DocumentController::class, 'massDelete'])->name('documents.mass_delete');
 
     //threads
     Route::get('/threads', [ThreadController::class, 'index'])->name('threads.index');
-    Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');

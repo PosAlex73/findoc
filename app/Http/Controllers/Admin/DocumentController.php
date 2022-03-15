@@ -19,7 +19,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = UserDocument::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $documents = UserDocument::with(['user'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.views.documents.list', ['documents' => $documents]);
     }
