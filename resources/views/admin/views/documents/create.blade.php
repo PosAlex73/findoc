@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('documents.store') }}" method="post">
+    <form action="{{ route('documents.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">

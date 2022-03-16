@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        @include('admin.components.pagination', ['items' => $user_histories])
+        @include('admin.components.pagination', ['items' => $user_histories, 'route' => 'histories'])
 
     </form>
 

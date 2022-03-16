@@ -27,6 +27,7 @@ class StoreUserDocumentRequest extends FormRequest
             'title' => 'required',
             'notice' => 'required',
             'path' => 'nullable',
+            'user_id' => 'required|exists:users,id'
         ];
     }
 }

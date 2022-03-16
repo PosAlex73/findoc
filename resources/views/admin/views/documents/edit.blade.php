@@ -1,25 +1,21 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('records.update', ['record' => $record]) }}" method="post">
+    <form action="{{ route('documents.store') }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
-                @include('admin.components.buttons.back_button', ['route' => 'records.index'])
+                @include('admin.components.buttons.back_button', ['route' => 'documents.index'])
                 @include('admin.components.buttons.submit')
             </div>
         </div>
-
         @include('admin.flash.errors')
-        @includeWhen(!empty(session('status')), 'admin.flash.flashs', ['message' => session('status')])
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ __('vars.update_record') }}</h5>
-                <p>{{ $record->datetime }}</p>
-                @include('admin.fields.textarea', ['name' => 'text', 'value' => $record->text])
-                @include('admin.fields.user_select', ['users' => $doctors, 'field_name' => 'spec_id', 'selected' => $record->spec_id])
-                @include('admin.fields.user_select', ['users' => $simple_users])
-                @include('admin.fields.select', ['name' => 'type', 'variants' => $record_types])
+                <h5 class="card-title">{{ __('vars.create_new') }}</h5>
+                @include('admin.fields.input', ['name' => 'title', 'value' => $document->title])
+                @include('admin.fields.textarea', ['name' => 'notice', 'value' => $document->notice])
+                @include('admin.fields.file', ['name' => 'path', 'value' => $document->path])
+
             </div>
         </div>
     </form>

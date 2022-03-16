@@ -14,7 +14,7 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">{{ __('vars.records') }}</h6>
+                        <h6 class="card-title">{{ __('vars.documents') }}</h6>
                         @if($documents->count() > 0)
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        @include('admin.components.pagination', ['items' => $documents])
+        @include('admin.components.pagination', ['items' => $documents, 'route' => 'documents'])
 
     </form>
 

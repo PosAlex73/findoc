@@ -4,7 +4,7 @@
             <div class="dataTables_paginate paging_simple_numbers" id="dataTableExample_paginate">
                 <ul class="pagination">
                     <li class="paginate_button page-item previous @if($items->onFirstPage()) disabled @endif" id="dataTableExample_previous">
-                        <a href="{{ route('users.index') }}"
+                        <a href="{{ route( $route . '.index') }}"
                            aria-controls="dataTableExample"
                            data-dt-idx="0"
                            tabindex="0"
@@ -34,7 +34,7 @@
                             </a>
                         </li>
                     <li class="paginate_button page-item next" id="dataTableExample_next">
-                        <a href="{{ route('users.index') . '?page=' . $items->lastPage() }}"
+                        <a href="{{ route( $route . '.index') . '?page=' . $items->lastPage() }}"
                            aria-controls="dataTableExample"
                            data-dt-idx="4"
                            tabindex="0"

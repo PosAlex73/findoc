@@ -42,12 +42,13 @@ class DocumentController extends Controller
      */
     public function store(StoreUserDocumentRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'notice', 'path']);
+        $fields = $request->safe()->only(['user_id', 'title', 'notice']);
         $document = UserDocument::create($fields);
+        $document->saveFile($request);
 
         $request->session()->flash('status', __('vars.document_was_created'));
 
-        return redirect()->to(route('documents.edit', ['services' => $document]));
+        return redirect()->to(route('documents.edit', ['document' => $document]));
     }
 
     /**

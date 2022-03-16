@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        @include('admin.components.pagination', ['items' => $records])
+        @include('admin.components.pagination', ['items' => $records, 'route' => 'records'])
 
     </form>
 

@@ -61,7 +61,7 @@
                 </div>
             </div>
         </div>
-        @include('admin.components.pagination', ['items' => $users])
+        @include('admin.components.pagination', ['items' => $users, 'route' => 'users'])
 
     </form>
 
