@@ -9,6 +9,7 @@ use App\Http\Requests\Users\StoreUserDocumentRequest;
 use App\Http\Requests\Users\UpdateUserDocumentRequest;
 use App\Models\UserDocument;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
 {
@@ -19,7 +20,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = UserDocument::with(['user'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $documents = UserDocument::with(['user'])->orderBy('created_at', 'desc')->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.views.documents.list', ['documents' => $documents]);
     }

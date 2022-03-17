@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserDocument extends Model
 {
@@ -32,7 +33,8 @@ class UserDocument extends Model
     public function saveFile(Request $request)
     {
         if ($request->exists('path')) {
-            $path = $request->file('path')->store('user_documents');
+            $path = Storage::putFile('user_documents', $request->file('path'));
+            $path = pathinfo($path, PATHINFO_BASENAME);
             $this->update(['path' => $path]);
         }
     }

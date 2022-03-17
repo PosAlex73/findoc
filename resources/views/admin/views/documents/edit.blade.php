@@ -14,7 +14,7 @@
                 <h5 class="card-title">{{ __('vars.create_new') }}</h5>
                 @include('admin.fields.input', ['name' => 'title', 'value' => $document->title])
                 @include('admin.fields.textarea', ['name' => 'notice', 'value' => $document->notice])
-                @include('admin.fields.file', ['name' => 'path', 'value' => $document->path])
+                @include('admin.fields.file', ['name' => 'path', 'path' => 'user_documents', 'file' => $document->path])
 
             </div>
         </div>
