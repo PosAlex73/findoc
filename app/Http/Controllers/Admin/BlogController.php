@@ -21,7 +21,7 @@ class BlogController extends AdminController
      */
     public function index()
     {
-        $articles = Blog::paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
+        $articles = Blog::with(['category'])->paginate(Set::get(SettingTypes::ADMIN_PAGINATION));
 
         return view('admin.views.blog.list', [
             'articles' => $articles
@@ -49,10 +49,10 @@ class BlogController extends AdminController
         $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
         $article = Blog::create($fields);
 
-        $request->sassion()->flash('status', __('vars.article_was_created'));
+        $request->session()->flash('status', __('vars.article_was_created'));
         Event::dispatch(new ArticlePublished($article));
 
-        return redirect()->to(route('blogs.index'));
+        return redirect()->to(route('blogs.edit', ['blog' => $article]));
     }
 
     /**

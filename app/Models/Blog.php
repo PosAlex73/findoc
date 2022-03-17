@@ -13,8 +13,17 @@ class Blog extends Model
         'title', 'text', 'image', 'status', 'category_id'
     ];
 
+    protected $attributes = [
+        'image' => ''
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getShortDescriptionAttribute()
+    {
+        return substr($this->text, 0,15);
     }
 }
