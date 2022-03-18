@@ -48,6 +48,7 @@ class BlogController extends AdminController
     {
         $fields = $request->safe()->only(['title', 'text', 'image', 'status', 'category_id']);
         $article = Blog::create($fields);
+        $article->saveImage($request);
 
         $request->session()->flash('status', __('vars.article_was_created'));
         Event::dispatch(new ArticlePublished($article));

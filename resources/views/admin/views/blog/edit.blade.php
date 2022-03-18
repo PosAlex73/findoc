@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('blogs.store') }}" method="post">
+    <form action="{{ route('blogs.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
@@ -15,7 +15,7 @@
                 <h5 class="card-title">{{ __('vars.create_new') }}</h5>
                 @include('admin.fields.input', ['name' => 'title', 'value' => $article->title])
                 @include('admin.fields.textarea', ['name' => 'text', 'value' => $article->text])
-                @include('admin.fields.image', ['name' => 'image', 'file' => $article->image, 'id' => $article->id])
+                @include('admin.fields.image', ['name' => 'image', 'file' => 'images/articles/' . $article->id, 'id' => $article->image])
                 @include('admin.fields.select', ['name' => 'category_id', 'variants' => $categories, 'key' => 'id', 'value' => 'title', 'selected' => $article->category_id])
                 @include('admin.fields.select', ['name' => 'status', 'variants' => $article_statuses, 'selected' => $article->status])
             </div>
