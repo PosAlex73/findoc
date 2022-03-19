@@ -72,6 +72,8 @@ class ComposerProvider extends ServiceProvider
                 'admin.views.vacancies.edit',
                 'admin.views.doctors.create',
                 'admin.views.doctors.edit',
+                'admin.views.services.create',
+                'admin.views.services.edit',
             ], CategoryComposer::class);
 
         View::composer(['admin.views.promotions.create', 'admin.views.promotions.edit'], PromoComposer::class);

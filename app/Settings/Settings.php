@@ -62,4 +62,21 @@ class Settings
             SettingEnums::FILE, SettingEnums::IMAGE
         ];
     }
+
+    public static function getSelectableTypes()
+    {
+        return (object) [
+            SettingEnums::SELECT, SettingEnums::RADIO
+        ];
+    }
+
+    public static function getFlatSettings()
+    {
+        $settings = [];
+        foreach (self::getSettings() as $tab) {
+            $settings = array_merge($settings, array_keys($tab));
+        }
+
+        return $settings;
+    }
 }

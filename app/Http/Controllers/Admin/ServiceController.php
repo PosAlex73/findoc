@@ -42,12 +42,12 @@ class ServiceController extends Controller
      */
     public function store(StoreServiceRequest $request)
     {
-        $fields = $request->safe()->only(['title', 'description', 'status', 'price']);
+        $fields = $request->safe()->only(['title', 'description', 'status', 'price', 'category_id']);
         $service = Service::create($fields);
 
         $request->session()->flash('status', __('vars.service_was_created'));
 
-        return redirect()->to(route('services.edit', ['services' => $service]));
+        return redirect()->to(route('services.edit', ['service' => $service]));
     }
 
     /**
@@ -70,7 +70,7 @@ class ServiceController extends Controller
      */
     public function update(UpdateServiceRequest $request, Service $service)
     {
-        $fields = $request->safe()->only(['title', 'description', 'status', 'price']);
+        $fields = $request->safe()->only(['title', 'description', 'status', 'price', 'category_id']);
         $service->update($fields);
 
         $request->session()->flash('status', __('vars.service_was_updated'));

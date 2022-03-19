@@ -13,6 +13,11 @@
             </div>
         </form>
         <ul class="navbar-nav">
+            @if(Auth()->user()->type === \App\Enums\User\UserTypes::ADMIN)
+                <li class="nav-item">
+                    <a href="{{ route('settings.index') }}">{{ __('vars.settings') }}</a>
+                </li>
+            @endif
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="flag-icon flag-icon-us mt-1" title="us"></i> <span class="ms-1 me-1 d-none d-md-inline-block">English</span>

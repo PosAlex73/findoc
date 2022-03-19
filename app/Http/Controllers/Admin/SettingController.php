@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Settings\StoreSettingRequest;
 use App\Http\Requests\Settings\UpdateSettingRequest;
 use App\Models\Setting;
+use App\Settings\Settings;
 
 class SettingController extends AdminController
 {
@@ -15,11 +14,7 @@ class SettingController extends AdminController
      */
     public function index()
     {
-        $settings = Setting::all();
-
-        return view('admin.views.settings.list', [
-            'settings' => $settings
-        ]);
+        return view('admin.views.settings.list');
     }
 
     /**
@@ -31,6 +26,15 @@ class SettingController extends AdminController
      */
     public function update(UpdateSettingRequest $request, Setting $setting)
     {
+        $field_types = Settings::getFlatSettings();
+        $settings = $request->only($field_types);
 
+        foreach ($settings as $title => $value) {
+            Setting::where('title', $title)->update(['value' => $value ?? '']);
+        }
+
+        $request->session()->flash('status', __('vars.settings_was_updated'));
+
+        return redirect()->to(route('settings.index'));
     }
 }

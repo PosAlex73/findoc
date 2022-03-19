@@ -55,7 +55,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/threads', [ThreadController::class, 'index'])->name('threads.index');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
-    Route::post('/settings', [SettingController::class, 'update'])->name('settings.update');
+    Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');
 
     Route::get('/download/{path}/{file}', [DownloadController::class, 'download'])->name('download');
 });

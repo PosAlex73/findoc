@@ -18,7 +18,7 @@ class Sidebar implements IMenu
             new Title(__('users')),
             new Group(__('users'), new Collection(['users.index', 'histories.index', 'documents.index', 'records.index']), 'user'),
             new Title('services_title', 'box'),
-            new Group(__('doctors_clinics'), new Collection(['specs.index', 'clinics.index', 'services.index', 'spec_reviews.index']), 'activity'),
+            new Group(__('doctors_clinics'), new Collection(['specs.index', 'clinics.index', 'services.index']), 'activity'),
             new Title('other', 'box'),
             new Link(__('vars.blogs'), 'blogs.index'),
             new Link(__('vars.categories'), 'categories.index', 'box'),

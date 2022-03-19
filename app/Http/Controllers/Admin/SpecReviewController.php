@@ -17,7 +17,7 @@ class SpecReviewController extends AdminController
      */
     public function index()
     {
-        return view('admin.views.doctors.list');
+        return view('admin.views.spec_reviews.list');
     }
 
     /**

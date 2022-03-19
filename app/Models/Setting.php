@@ -12,4 +12,8 @@ class Setting extends Model
     protected $fillable = [
         'title', 'value', 'type'
     ];
+
+    protected $attributes = [
+        'value' => ''
+    ];
 }
