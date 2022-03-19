@@ -6,6 +6,7 @@ use App\BreadCrumbs\BreadCrumbs;
 use App\Composers\Admin\AdminComposer;
 use App\Composers\Admin\ArticleComposer;
 use App\Composers\Admin\CategoryComposer;
+use App\Composers\Admin\ClinicComposer;
 use App\Composers\Admin\PromoComposer;
 use App\Composers\Admin\SimpleUserComposer;
 use App\Composers\Admin\SpecStatusesComposer;
@@ -54,6 +55,13 @@ class ComposerProvider extends ServiceProvider
                 'admin.views.records.edit'
             ],
             DoctorComposer::class);
+
+        View::composer(
+            [
+                'admin.views.clinics.create',
+                'admin.views.clinics.edit'
+            ],
+            ClinicComposer::class);
 
         View::composer('admin.views.blog.*', ArticleComposer::class);
         View::composer(

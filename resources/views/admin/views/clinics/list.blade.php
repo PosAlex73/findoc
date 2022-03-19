@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('services.mass_delete') }}" method="post">
+    <form action="{{ route('clinics.mass_delete') }}" method="post">
         @csrf
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 @include('admin.components.buttons.back_button', ['route' => 'dashboard'])
-                @include('admin.components.buttons.create_new', ['item' => 'specs'])
+                @include('admin.components.buttons.create_new', ['item' => 'clinics'])
                 @include('admin.components.buttons.mass_delete')
             </div>
         </div>
@@ -15,38 +15,38 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">{{ __('vars.doctors') }}</h6>
-                        @if($doctors->count() > 0)
+                        @if($clinics->count() > 0)
                         <div class="table-responsive">
                             <table id="dataTableExample" class="table">
                                 <thead>
                                 <tr>
-                                    <th>{{ __('vars.full_name') }}</th>
-                                    <th>{{ __('vars.category') }}</th>
-                                    <th>{{ __('vars.phone') }}</th>
+                                    <th>{{ __('vars.title') }}</th>
                                     <th>{{ __('vars.status') }}</th>
+                                    <th>{{ __('vars.found') }}</th>
+                                    <th>{{ __('vars.phone') }}</th>
                                     <th>{{ __('vars.address') }}</th>
                                     <th>{{ __('vars.delete') }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($doctors as $doctor)
+                                @foreach($clinics as $clinic)
                                     <tr>
                                         <td>
-                                            <a href="{{ route('specs.edit', ['spec' => $doctor]) }}">
-                                                {{ $doctor->full_name }}
+                                            <a href="{{ route('clinics.edit', ['clinic' => $clinic]) }}">
+                                                {{ $clinic->title }}
                                             </a>
                                         </td>
-                                        <td>{{ $doctor->category->title }}</td>
-                                        <td>{{ $doctor->phone }}</td>
-                                        <td>{{ __('vars.status_' . $doctor->spec_status) }}</td>
-                                        <td>{{ $doctor->address }}</td>
+                                        <td>{{ __('vars.clinic_status_' . $clinic->status) }}</td>
+                                        <td>{{ $clinic->found }}</td>
+                                        <td>{{ $clinic->phone }}</td>
+                                        <td>{{ $clinic->address }}</td>
                                         <td>
                                             <input
                                                 type="checkbox"
                                                 class="form-check-input"
-                                                name="specs[]"
-                                                value="{{ $doctor->id }}"
-                                                id="{{ $doctor->id }}"
+                                                name="clinics[]"
+                                                value="{{ $clinic->id }}"
+                                                id="{{ $clinic->id }}"
                                             >
                                         </td>
                                     </tr>
@@ -55,15 +55,12 @@
                             </table>
                         </div>
                         @else
-                            <p>{{ __('var.no_histories_found') }}</p>
+                            <p>{{ __('var.no_clinics_found') }}</p>
                         @endif
                     </div>
                 </div>
             </div>
         </div>
-        @include('admin.components.pagination', ['items' => $doctors, 'route' => 'specs'])
-
+        @include('admin.components.pagination', ['items' => $clinics, 'route' => 'clinics'])
     </form>
-
-
 @endsection

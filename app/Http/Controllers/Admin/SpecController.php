@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreSpecRequest;
-use App\Http\Requests\UpdateSpecRequest;
+use App\Http\Requests\Services\StoreSpecRequest;
+use App\Http\Requests\Services\UpdateSpecRequest;
 use App\Models\Spec;
 use Illuminate\Http\Request;
 
@@ -91,12 +91,22 @@ class SpecController extends AdminController
      */
     public function update(UpdateSpecRequest $request, Spec $spec)
     {
-        $fields = $request->safe()->only(['title', 'description', 'status']);
+        $fields = $request->safe()->only([
+                'first_name',
+                'last_name',
+                'category_id',
+                'description',
+                'education',
+                'experience',
+                'phone',
+                'address',
+                'spec_status']
+        );
         $spec->update($fields);
 
         $request->session()->flash('status', __('vars.doctor_was_updated'));
 
-        return redirect()->to(route('doctors.edit', ['doctor' => $spec]));
+        return redirect()->to(route('specs.edit', ['spec' => $spec]));
     }
 
     /**
