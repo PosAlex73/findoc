@@ -21,4 +21,9 @@ class Vacancy extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function getShortDescriptionAttribute()
+    {
+        return substr($this->text, 0 , 15) . '...';
+    }
 }

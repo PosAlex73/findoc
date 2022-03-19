@@ -7,6 +7,7 @@ use App\Facades\Set;
 use App\Http\Requests\Vacancies\StoreVacancyRequest;
 use App\Http\Requests\Vacancies\UpdateVacancyRequest;
 use App\Models\Vacancy;
+use Illuminate\Http\Request;
 
 class VacancyController extends AdminController
 {
@@ -67,7 +68,7 @@ class VacancyController extends AdminController
      */
     public function edit(Vacancy $vacancy)
     {
-        return view('admin.views.vacancies.edit', ['category' => $vacancy]);
+        return view('admin.views.vacancies.edit', ['vacancy' => $vacancy]);
     }
 
     /**
@@ -98,6 +99,15 @@ class VacancyController extends AdminController
         Vacancy::destroy($vacancy->id);
 
         request()->session()->flash('status', __('vars.vacancy_was_deleted'));
+
+        return redirect()->to(route('vacancies.index'));
+    }
+
+    public function massDelete(Request $request)
+    {
+        $ids = $request->get('vacancies');
+        Vacancy::destroy($ids);
+        $request->session()->flash('status', __('vars.vacancies_were_deleted'));
 
         return redirect()->to(route('vacancies.index'));
     }

@@ -2,6 +2,7 @@
 
 namespace App\Composers\Admin;
 
+use App\Enums\CommonStatuses;
 use App\Enums\User\UserStatuses;
 use App\Enums\User\UserTypes;
 use Illuminate\View\View;
@@ -12,5 +13,6 @@ class AdminComposer
     {
         $view->with('statuses', UserStatuses::getAll());
         $view->with('types', UserTypes::getAll());
+        $view->with('common_statuses', CommonStatuses::getAll());
     }
 }

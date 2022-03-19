@@ -37,4 +37,9 @@ class Category extends Model
     {
         return $this->hasMany(Service::class);
     }
+
+    public function getShortDescriptionAttribute()
+    {
+        return substr($this->description, 0, 15) . '...';
+    }
 }

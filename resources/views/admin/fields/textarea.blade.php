@@ -5,6 +5,5 @@
         id="{{ $name }}"
         name="{{ $name }}"
         rows="5"
-    >{{ $value ?? '' }}
-    </textarea>
+    >{{ $value ?? '' }}</textarea>
 </div>

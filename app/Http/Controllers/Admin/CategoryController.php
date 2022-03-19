@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
-use App\Http\Requests\Services\StoreCategoryRequest;
-use App\Http\Requests\Services\UpdateCategoryRequest;
+use App\Http\Requests\Categories\StoreCategoryRequest;
+use App\Http\Requests\Categories\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -104,7 +105,7 @@ class CategoryController extends AdminController
 
     public function massDelete(Request $request)
     {
-        $ids = $request->get('clinics');
+        $ids = $request->get('categories');
         Category::destroy($ids);
         $request->session()->flash('status', __('vars.categories_were_deleted'));
 

@@ -1,11 +1,11 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('vacancies.mass_delete') }}" method="post">
+    <form action="{{ route('categories.mass_delete') }}" method="post">
         @csrf
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 @include('admin.components.buttons.back_button', ['route' => 'dashboard'])
-                @include('admin.components.buttons.create_new', ['item' => 'vacancies'])
+                @include('admin.components.buttons.create_new', ['item' => 'categories'])
                 @include('admin.components.buttons.mass_delete')
             </div>
         </div>
@@ -14,8 +14,8 @@
             <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h6 class="card-title">{{ __('vars.vacancies') }}</h6>
-                        @if($vacancies->count() > 0)
+                        <h6 class="card-title">{{ __('vars.categories') }}</h6>
+                        @if($categories->count() > 0)
                             <div class="table-responsive">
                                 <table id="dataTableExample" class="table">
                                     <thead>
@@ -23,28 +23,26 @@
                                         <th>{{ __('vars.title') }}</th>
                                         <th>{{ __('vars.short_description') }}</th>
                                         <th>{{ __('vars.status') }}</th>
-                                        <th>{{ __('vars.category') }}</th>
                                         <th>{{ __('vars.delete') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($vacancies as $vacancy)
+                                    @foreach($categories as $category)
                                         <tr>
                                             <td>
-                                                <a href="{{ route('vacancies.edit', ['vacancy' => $vacancy]) }}">
-                                                    {{ $vacancy->title }}
+                                                <a href="{{ route('categories.edit', ['category' => $category]) }}">
+                                                    {{ $category->title }}
                                                 </a>
                                             </td>
-                                            <td>{{ $vacancy->short_description }}</td>
-                                            <td>{{ __('vars.statuses' . $vacancy->status) }}</td>
-                                            <td>{{ $vacancy->category->title }}</td>
+                                            <td>{{ $category->short_description }}</td>
+                                            <td>{{ __('vars.statuses' . $category->status) }}</td>
                                             <td>
                                                 <input
                                                     type="checkbox"
                                                     class="form-check-input"
-                                                    name="vacancies[]"
-                                                    value="{{ $vacancy->id }}"
-                                                    id="{{ $vacancy->id }}"
+                                                    name="categories[]"
+                                                    value="{{ $category->id }}"
+                                                    id="{{ $category->id }}"
                                                 >
                                             </td>
                                         </tr>
@@ -53,12 +51,12 @@
                                 </table>
                             </div>
                         @else
-                            <p>{{ __('var.no_vacancy_found') }}</p>
+                            <p>{{ __('var.no_categories_found') }}</p>
                         @endif
                     </div>
                 </div>
             </div>
         </div>
-        @include('admin.components.pagination', ['items' => $vacancies, 'route' => 'vacancies'])
+        @include('admin.components.pagination', ['items' => $categories, 'route' => 'categories'])
     </form>
 @endsection
