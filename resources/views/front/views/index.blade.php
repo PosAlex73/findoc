@@ -176,7 +176,7 @@
             <div class="container">
                 <div class="row justify-content-around">
                     <div class="col-md-5">
-                        <p><img src="img/app_img.svg" alt="" class="img-fluid" width="500" height="433"></p>
+                        <p><img src="{{ assert('front/img/app_img.svg') }}" alt="" class="img-fluid" width="500" height="433"></p>
                     </div>
                     <div class="col-md-6">
                         <small>Application</small>
@@ -188,8 +188,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" class="draw-arrow tail-1" d="M40.6,78.1C39,71.3,37.2,64.6,35.2,58" />
                                 <path stroke-linecap="round" stroke-linejoin="round" class="draw-arrow tail-2" d="M39.8,78.5c-7.2,1.7-14.3,3.3-21.5,4.9" />
 						</svg>
-                            <a href="#0" class="fadeIn"><img src="img/apple_app.png" alt="" width="150" height="50" data-retina="true"></a>
-                            <a href="#0" class="fadeIn"><img src="img/google_play_app.png" alt="" width="150" height="50" data-retina="true"></a>
+                            <a href="#0" class="fadeIn"><img src="{{ assert('front/img/apple_app.png') }}" alt="" width="150" height="50" data-retina="true"></a>
+                            <a href="#0" class="fadeIn"><img src="{{ assert('front/img/google_play_app.png') }}" alt="" width="150" height="50" data-retina="true"></a>
                         </div>
                     </div>
                 </div>

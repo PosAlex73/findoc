@@ -4,7 +4,7 @@
             <div class="col-lg-3 col-md-12">
                 <p>
                     <a href="index.html" title="Findoctor">
-                        <img src="img/logo.png" alt="" width="163" height="36" class="img-fluid">
+                        <img src="{{ assert('front/icon-home-3.svg') }}" alt="" width="163" height="36" class="img-fluid">
                     </a>
                 </p>
             </div>
