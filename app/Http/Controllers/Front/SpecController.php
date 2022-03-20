@@ -16,4 +16,9 @@ class SpecController extends Controller
             'doctor' => $spec
         ]);
     }
+
+    public function view(Spec $spec)
+    {
+        return view('front.views.doctors.details', ['doctor' => $spec]);
+    }
 }

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Front\CategoryController;
 use App\Http\Controllers\Front\AppointmentController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\ClinicController;
 use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\PromotionController;
+use App\Http\Controllers\Front\ServiceController;
 use App\Http\Controllers\Front\SpecController;
 use App\Http\Controllers\Front\ThreadController;
 use App\Http\Controllers\Front\UserDocumentController;
@@ -20,7 +22,10 @@ Route::get('/clinics', [IndexController::class, 'clinics'])->name('front.clinics
 Route::get('/promotions', [IndexController::class, 'promotions'])->name('front.promotions');
 Route::get('/blog', [BlogController::class, 'articles'])->name('front.blog');
 
-Route::get('/doctors/{spec}', [SpecController::class, 'list'])->name('front.doctors.view');
+Route::get('/categories/{category}', [CategoryController::class, 'view'])->name('front.categories.view');
+Route::get('/services/{service}', [ServiceController::class, 'details'])->name('front.services.details');
+
+Route::get('/doctors/{spec}', [SpecController::class, 'view'])->name('front.doctors.view');
 Route::get('/clinics/{clinic}', [ClinicController::class, 'list'])->name('front.clinics.view');
 Route::get('/appointment/', [AppointmentController::class, 'record'])->name('front.record');
 Route::post('/record', [AppointmentController::class, 'createRecord'])->name('front.new_record');

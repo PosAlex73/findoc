@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\CommonStatuses;
 use App\Enums\Settings\SettingTypes;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Clinic;
 use App\Models\Promotion;
 use App\Models\Spec;
@@ -21,18 +23,18 @@ class IndexController extends Controller
 
     public function services()
     {
-        $services = Settings::paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+        $categories = Category::where(['status' => CommonStatuses::ACTIVE])->get();
 
-        return view('front.pages.services.list', [
-            'services' => $services
-        ]);
+        return view('front.views.services.list',
+            ['categories' => $categories]
+        );
     }
 
     public function doctors()
     {
         $doctors = Spec::paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
-        return view('front.views.services.list', [
+        return view('front.views.doctors.list', [
             'doctors' => $doctors
         ]);
     }

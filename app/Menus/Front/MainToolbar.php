@@ -21,7 +21,7 @@ class MainToolbar implements IMenu
             'front.clinics' => [
                 'name' => 'front.clinics'
             ],
-            'promotions' => [
+            'front.promotions' => [
                 'name' => 'front.promotions'
             ],
             'front.blog' => [
