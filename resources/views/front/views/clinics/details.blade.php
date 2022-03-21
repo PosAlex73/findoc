@@ -18,9 +18,9 @@
                     <nav id="secondary_nav">
                         <div class="container">
                             <ul class="clearfix">
-                                <li><a href="#section_1" class="active">General info</a></li>
-                                <li><a href="#section_2">Reviews</a></li>
-                                <li><a href="#sidebar">Booking</a></li>
+                                <li><a href="#section_1" class="active">{{ __('vars.general_info') }}</a></li>
+                                <li><a href="#section_2">{{ __('vars.reviews') }}</a></li>
+                                <li><a href="#sidebar">{{ __('vars.booking') }}</a></li>
                             </ul>
                         </div>
                     </nav>
