@@ -24,9 +24,10 @@ Route::get('/blog', [BlogController::class, 'articles'])->name('front.blog');
 
 Route::get('/categories/{category}', [CategoryController::class, 'view'])->name('front.categories.view');
 Route::get('/services/{service}', [ServiceController::class, 'details'])->name('front.services.details');
-
 Route::get('/doctors/{spec}', [SpecController::class, 'view'])->name('front.doctors.view');
-Route::get('/clinics/{clinic}', [ClinicController::class, 'list'])->name('front.clinics.view');
+Route::get('/clinics/{clinic}', [ClinicController::class, 'view'])->name('front.clinics.view');
+
+
 Route::get('/appointment/', [AppointmentController::class, 'record'])->name('front.record');
 Route::post('/record', [AppointmentController::class, 'createRecord'])->name('front.new_record');
 Route::get('/blog/{blog}', [BlogController::class, 'view'])->name('front.blog.article');

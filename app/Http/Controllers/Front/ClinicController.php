@@ -7,9 +7,9 @@ use App\Models\Clinic;
 
 class ClinicController extends Controller
 {
-    public function list(Clinic $clinic)
+    public function view(Clinic $clinic)
     {
-        return view('front.views.clinics.view', [
+        return view('front.views.clinics.details', [
             'clinic' => $clinic
         ]);
     }
