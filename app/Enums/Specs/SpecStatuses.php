@@ -12,4 +12,6 @@ class SpecStatuses
     public const VACATION = 'V';
     public const FIRED = 'F';
     public const BUSY = 'B';
+    public const NEW = 'N';
+    public const BLOCKED = 'B';
 }
