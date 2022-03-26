@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Enums\CommonStatuses;
 use App\Enums\Settings\SettingTypes;
+use App\Enums\Specs\ClinicStatuses;
+use App\Enums\Specs\SpecStatuses;
 use App\Facades\Set;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
@@ -11,14 +13,27 @@ use App\Models\Category;
 use App\Models\Clinic;
 use App\Models\Promotion;
 use App\Models\Spec;
-use App\Settings\Settings;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        return view('front.views.index');
+        $clinics = Clinic::where(
+            ['status' => ClinicStatuses::ACTIVE,])
+            ->limit(10)
+            ->get(['id', 'title']);
+
+        $categories = Category::where(['status' => CommonStatuses::ACTIVE])
+            ->limit(10)
+            ->get(['id', 'title']);
+
+        $doctors = Spec::where(['spec_status' => SpecStatuses::ACTIVE])
+            ->limit(5)
+            ->get();
+
+        return view('front.views.index',
+            ['clinics_list' => $clinics, 'categories_list' => $categories, 'doctors_list' => $doctors]
+        );
     }
 
     public function services()
