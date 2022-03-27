@@ -20,7 +20,9 @@ Route::get('/service', [IndexController::class, 'services'])->name('front.servic
 Route::get('/doctors', [IndexController::class, 'doctors'])->name('front.doctors');
 Route::get('/clinics', [IndexController::class, 'clinics'])->name('front.clinics');
 Route::get('/promotions', [IndexController::class, 'promotions'])->name('front.promotions');
-Route::get('/blog', [BlogController::class, 'articles'])->name('front.blog');
+Route::get('/blog', [IndexController::class, 'articles'])->name('front.blog');
+
+Route::get('/search', [IndexController::class, 'search'])->name('front.search_all');
 
 Route::get('/categories/{category}', [CategoryController::class, 'view'])->name('front.categories.view');
 Route::get('/services/{service}', [ServiceController::class, 'details'])->name('front.services.details');
