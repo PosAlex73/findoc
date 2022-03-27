@@ -62,7 +62,7 @@
                 </div>
             </div>
             <!-- /row -->
-            <p class="text-center"><a href="list.html" class="btn_1 medium">Find Doctor</a></p>
+            <p class="text-center"><a href="{{ route('front.doctors') }}" class="btn_1 medium">Find Doctor</a></p>
 
         </div>
         <!-- /container -->

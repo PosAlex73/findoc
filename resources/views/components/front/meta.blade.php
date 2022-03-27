@@ -20,6 +20,8 @@
 <link href="{{ asset('css/front/menu.css') }}" rel="stylesheet">
 <link href="{{ asset('css/front/vendors.css') }}" rel="stylesheet">
 <link href="{{ asset('css/front/icon_fonts/css/all_icons_min.css') }}" rel="stylesheet">
+<link href="{{ asset('css/front/blog.css') }}" rel="stylesheet">
+
 
 <!-- YOUR CUSTOM CSS -->
 <link href="{{ asset('css/front/custom.css') }}" rel="stylesheet">

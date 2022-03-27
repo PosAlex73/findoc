@@ -9,7 +9,7 @@ class BlogController extends Controller
 {
     public function view(Blog $blog)
     {
-        return view('front.views.blog.view', [
+        return view('front.views.articles.view', [
             'article' => $blog
         ]);
     }
