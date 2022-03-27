@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\Specs\ClinicStatuses;
+use App\Enums\Specs\SpecStatuses;
 use App\Events\Users\UserRecordedCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\StoreAppointmentRequest;
 use App\Models\Appointment;
+use App\Models\Clinic;
+use App\Models\Spec;
 use Illuminate\Support\Facades\Event;
 
 class AppointmentController extends Controller
 {
     public function record()
     {
-        return view('front.views.records.view');
+        $doctors = Spec::where(['spec_status' => SpecStatuses::ACTIVE])->get();
+        $clinics = Clinic::where(['status' => ClinicStatuses::ACTIVE])->get();
+
+        return view('front.views.records.view',
+            ['doctors' => $doctors, 'clinics' => $clinics]
+        );
     }
 
     public function createRecord(StoreAppointmentRequest $request)

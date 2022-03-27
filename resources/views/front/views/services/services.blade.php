@@ -17,7 +17,7 @@
                         <th scope="row">{{ $service->id }}</th>
                         <td><a href="{{ route('front.services.details', ['service' => $service]) }}">{{ $service->title }}</a></td>
                         <td>{{ $service->price }}</td>
-                        <td><a href="">{{ __('vars.appointment') }}</a></td>
+                        <td><a href="{{ route('front.records') }}">{{ __('vars.appointment') }}</a></td>
                     </tr>
                 @endforeach
                 </tbody>

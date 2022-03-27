@@ -52,6 +52,11 @@ class Settings
                     'value' => '',
                     'type' => SettingEnums::IMAGE
                 ]
+            ],
+            SettingTabs::FRONT_TAB => [
+                'title' => SettingTypes::SOCIAL_LOGIN,
+                'value' => 'N',
+                'type' => SettingEnums::CHECKBOX
             ]
         ];
     }

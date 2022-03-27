@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Enums\CommonStatuses;
+use App\Enums\Promo\PromoStatuses;
 use App\Enums\Settings\SettingTypes;
 use App\Enums\Specs\ClinicStatuses;
 use App\Enums\Specs\SpecStatuses;
@@ -65,7 +66,8 @@ class IndexController extends Controller
 
     public function promotions()
     {
-        $promotions = Promotion::paginate(Set::get(SettingTypes::FRONT_PAGINATION));
+        $promotions = Promotion::where(['status' => PromoStatuses::ACTIVE])
+            ->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
         return view('front.views.promotions.list', [
             'promotions' => $promotions

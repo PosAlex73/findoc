@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user();
+@endphp
+
 @extends('layouts.front')
 @section('content')
     <main>
@@ -29,13 +33,13 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>First name</label>
+                                        <label>{{ $user->first_name ?? '' }}</label>
                                         <input type="text" class="form-control" id="firstname_booking" name="firstname_booking" placeholder="Jhon">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>Last name</label>
+                                        <label>{{ $user->last_name ?? '' }}</label>
                                         <input type="text" class="form-control" id="lastname_booking" name="lastname_booking" placeholder="Doe">
                                     </div>
                                 </div>

@@ -1,56 +1,43 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+@extends('layouts.front')
+@section('content')
+    <main>
+        <div class="bg_color_2">
+            <div class="container margin_60_35">
+                <div id="login-2">
+                    <h1>Please login to Findoctor!</h1>
+                    <form action="{{ route('login') }}" method="post">
+                        @csrf
+                        <div class="box_form clearfix">
+                            @if(\App\Facades\Set::get(\App\Enums\Settings\SettingTypes::SOCIAL_LOGIN) === 'Y')
+                            <div class="box_login">
+                                <a href="#0" class="social_bt facebook">Login with Facebook</a>
+                                <a href="#0" class="social_bt google">Login with Google</a>
+                                <a href="#0" class="social_bt linkedin">Login with Linkedin</a>
+                            </div>
+                            @endif
+                            <div class="box_login last">
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control" placeholder="{{ __('vars.enter_email') }}">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="{{ __('vars.enter_password') }}" name="password" id="password">
+                                    <a href="#0" class="forgot"><small>{{ __('vars.forgot_password') }}</small></a>
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn_1" type="submit" value="Login">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p class="text-center link_bright">{{ __('vars.have_not_password') }}
+                        <a href="{{ route('register') }}">
+                            <strong>{{ __('vars.register_now') }}</strong>
+                        </a>
+                    </p>
+                </div>
+                <!-- /login -->
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+        </div>
+    </main>
+    <!-- /main -->
+@endsection
