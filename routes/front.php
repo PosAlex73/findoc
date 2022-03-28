@@ -37,7 +37,7 @@ Route::get('/promotions/{promotion}', [PromotionController::class, 'view'])->nam
 
 Route::prefix('/profile')->middleware(['auth'])->group(function () {
     Route::get('/', [UserProfileController::class, 'profile'])->name('front.profile');
-    Route::get('/history', [UserHistoryController::class, 'history'])->name('front.history.list');
+    Route::get('/history', [UserHistoryController::class, 'history'])->name('front.history');
 
     Route::get('/notifications', [UserProfileController::class, 'notifications'])->name('front.notifications');
     Route::delete('/notifications/{notification}', [UserProfileController::class, 'deleteNotification'])->name('front.notifications.delete');

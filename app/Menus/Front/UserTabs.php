@@ -12,8 +12,8 @@ class UserTabs implements IMenu
             'front.profile' => [
                 'name' => 'front.profile',
             ],
-            'front.history.list' => [
-                'name' => 'front.history.list',
+            'front.history' => [
+                'name' => 'front.history',
             ],
             'front.notifications' => [
                 'name' => 'front.notifications'

@@ -6,6 +6,8 @@ use Illuminate\View\Component;
 
 class UserTabs extends Component
 {
+    public $tabs;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +15,7 @@ class UserTabs extends Component
      */
     public function __construct()
     {
-        //
+        $this->tabs = \App\Menus\Front\UserTabs::getMenu();
     }
 
     /**
