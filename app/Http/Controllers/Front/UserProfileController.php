@@ -14,6 +14,11 @@ class UserProfileController extends Controller
         return view('front.views.profile.index');
     }
 
+    public function update(Request $request)
+    {
+
+    }
+
     public function notifications()
     {
         return view('front.views.profile.notifications');
