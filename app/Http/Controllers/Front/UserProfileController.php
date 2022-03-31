@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserProfile;
+use App\Http\Requests\Front\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,9 +14,14 @@ class UserProfileController extends Controller
         return view('front.views.profile.index');
     }
 
-    public function update(Request $request)
+    public function update(ProfileUpdateRequest $request)
     {
+        $fields = $request->safe()->only(['first_name', 'last_name', 'age', 'gender', 'email']);
+        Auth::user()->update($fields);
 
+        $request->session()->flash('status', __('vars.profile_was_updated'));
+
+        return redirect()->to('front.profile');
     }
 
     public function notifications()

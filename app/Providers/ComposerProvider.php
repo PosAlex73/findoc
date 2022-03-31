@@ -13,6 +13,7 @@ use App\Composers\Admin\SpecStatusesComposer;
 use App\Composers\Admin\UserComposer;
 use App\Composers\Admin\VacancyComposer;
 use App\Composers\Common\DoctorComposer;
+use App\Composers\Front\GenderComposer;
 use App\Enums\Vacancies\VacancyStatuses;
 use App\Models\Category;
 use Illuminate\Support\Facades\View;
@@ -80,5 +81,7 @@ class ComposerProvider extends ServiceProvider
         View::composer(['admin.views.vacancies.create', 'admin.views.vacancies.edit'], VacancyComposer::class);
 
         View::composer(['admin.views.doctors.create', 'admin.views.doctors.edit'], SpecStatusesComposer::class);
+
+        View::composer(['front.views.profile.tabs.profile'], GenderComposer::class);
     }
 }
