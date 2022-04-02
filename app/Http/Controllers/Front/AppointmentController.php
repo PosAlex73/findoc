@@ -10,6 +10,7 @@ use App\Http\Requests\Users\StoreAppointmentRequest;
 use App\Models\Appointment;
 use App\Models\Clinic;
 use App\Models\Spec;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 
 class AppointmentController extends Controller
@@ -22,6 +23,14 @@ class AppointmentController extends Controller
         return view('front.views.records.view',
             ['doctors' => $doctors, 'clinics' => $clinics]
         );
+    }
+
+    public function records()
+    {
+        $user = Auth::user();
+        $records = $user->records();
+
+        return view('front.views.profile.index', ['records' => $records]);
     }
 
     public function createRecord(StoreAppointmentRequest $request)

@@ -35,7 +35,7 @@ class Appointment extends Model
     {
         return Attribute::make(
             set: function($value) {
-                return (new \DateTime($value));
+                return (new \DateTime())->setTimestamp($value)->format('Y-m-d H:i:s');
             }
         );
     }

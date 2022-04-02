@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Enums\CommonStatuses;
 use App\Enums\User\Gender;
 use App\Enums\User\UserTypes;
+use App\Models\Appointment;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Clinic;
@@ -113,6 +114,15 @@ class CommonSeeder extends Seeder
             $user = $users->random();
             SpecReview::factory()->count(rand(1, 5))->for($spec)->create([
                 'user_id' => $user->id
+            ]);
+        }
+
+        foreach ($users as $user) {
+            $spec = $specs->random();
+            Appointment::factory()->count(1, 10)->create([
+               'user_id' => $user->id,
+               'spec_id' => $spec->id,
+                'datetime' => (new \DateTime())->getTimestamp()
             ]);
         }
     }

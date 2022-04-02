@@ -59,7 +59,8 @@ class ArticlePublished extends Notification
         return [
             'article_id' => $this->article->id,
             'title' => __('vars.new_article_published'),
-            'text' => __('vars.new_article_published')
+            'text' => __('vars.new_article_published'),
+            'template' => 'article_published'
         ];
     }
 }

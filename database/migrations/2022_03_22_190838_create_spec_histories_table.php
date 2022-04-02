@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('spec_histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('spec_id');
-            $table->foreign('user_id')->references('id')->on('specs')->cascadeOnDelete();
+            $table->foreign('spec_id')->references('id')->on('specs')->cascadeOnDelete();
             $table->timestamps();
         });
     }
