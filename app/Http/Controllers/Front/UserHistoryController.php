@@ -14,7 +14,7 @@ class UserHistoryController extends Controller
     {
         $history = UserHistory::where('id', Auth::user()->id)->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
-        return view('front.views.profile.history', [
+        return view('front.views.profile.index', [
             'history' => $history
         ]);
     }

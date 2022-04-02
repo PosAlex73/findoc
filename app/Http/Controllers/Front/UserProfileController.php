@@ -21,12 +21,16 @@ class UserProfileController extends Controller
 
         $request->session()->flash('status', __('vars.profile_was_updated'));
 
-        return redirect()->to('front.profile');
+        return redirect()->to(route('front.profile'));
     }
 
     public function notifications()
     {
-        return view('front.views.profile.notifications');
+        $notifications = Auth::user()->notifications;
+
+        return view('front.views.profile.index', [
+            'notifications' => $notifications
+        ]);
     }
 
     public function deleteNotification(Request $request, string $notification)
