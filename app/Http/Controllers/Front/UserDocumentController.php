@@ -16,7 +16,7 @@ class UserDocumentController extends Controller
     {
         $documents = UserDocument::where('user_id', Auth::user()->id)->paginate(Set::get(SettingTypes::FRONT_PAGINATION));
 
-        return view('front.views.documents.list');
+        return view('front.views.profile.index', ['documents' => $documents]);
     }
 
     public function storeDocument(StoreUserDocumentRequest $request)

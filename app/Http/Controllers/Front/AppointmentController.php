@@ -28,7 +28,7 @@ class AppointmentController extends Controller
     public function records()
     {
         $user = Auth::user();
-        $records = $user->records();
+        $records = $user->records;
 
         return view('front.views.profile.index', ['records' => $records]);
     }

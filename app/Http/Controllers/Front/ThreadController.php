@@ -6,12 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Threads\StoreThreadMessageRequest;
 use App\Models\ThreadMessage;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
     public function thread()
     {
-        return view('front.views.threads.view');
+        $thread = Auth::user()->thread;
+        $messages = $thread->messages;
+
+        return view('front.views.profile.index',
+            [
+                'thread' => $thread,
+                'messages' => $messages
+            ]
+        );
     }
 
     public function newMessage(StoreThreadMessageRequest $request, User $user)
