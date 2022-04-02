@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Threads\UpdateThreadRequest;
 use App\Models\Thread;
+use App\Models\User;
 
 class ThreadController extends AdminController
 {
@@ -13,9 +13,11 @@ class ThreadController extends AdminController
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Thread $thread)
+    public function edit(User $user)
     {
-        return view('admin.views.threads.edit', ['thread' => $thread]);
+        $thread = $user->thread;
+
+        return view('admin.views.users.edit', ['thread' => $thread, 'user' => $user]);
     }
 
     /**

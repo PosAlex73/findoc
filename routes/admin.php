@@ -52,7 +52,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
     Route::post('/documents/mass', [DocumentController::class, 'massDelete'])->name('documents.mass_delete');
 
     //threads
-    Route::get('/threads', [ThreadController::class, 'index'])->name('threads.index');
+    Route::get('/threads/{user}', [ThreadController::class, 'edit'])->name('threads');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');

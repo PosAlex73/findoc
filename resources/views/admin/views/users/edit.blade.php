@@ -11,16 +11,30 @@
         </div>
         @include('admin.flash.errors')
         @includeWhen(!empty(session('status')), 'admin.flash.flashs', ['message' => session('status')])
+
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">{{ $user->full_name }}</h5>
-                @include('admin.fields.input', ['name' => 'first_name', 'value' => $user->first_name])
-                @include('admin.fields.input', ['name' => 'last_name', 'value' => $user->last_name])
-                @include('admin.fields.email', ['name' => 'email', 'value' => $user->email])
-                @include('admin.fields.number', ['name' => 'age', 'value' => $user->age])
-                @include('admin.fields.select', ['name' => 'gender', 'variants' => $genders, 'selected' => $user->gender])
-                @include('admin.fields.select', ['name' => 'status', 'variants' => $user_statuses, 'selected' => $user->status])
-                @include('admin.fields.select', ['name' => 'type', 'variants' => $user_types, 'selected' => $user->type])
+
+                <ul class="nav nav-pills my-3">
+                    <li class="nav-item">
+                        <a class="nav-link @if(Route::currentRouteName() === 'users.edit') active @endif"
+                           aria-current="page"
+                           href="{{ route('users.edit', ['user' => $user]) }}">
+                            {{ __('vars.profile') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link @if(Route::currentRouteName() === 'threads') active @endif"
+                           href="{{ route('threads', ['user' => $user]) }}">
+                            {{ __('vars.threads') }}
+                        </a>
+                    </li>
+                </ul>
+            @if(Route::currentRouteName() === 'users.edit')
+                @include('admin.views.users.components.profile')
+            @elseif(Route::currentRouteName() === 'threads')
+                @include('admin.views.users.components.thread')
+            @endif
             </div>
         </div>
     </form>
