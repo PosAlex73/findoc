@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Enums\MessageStatuses;
+use App\Enums\User\MessageOwner;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Threads\StoreThreadMessageRequest;
+use App\Models\Thread;
 use App\Models\ThreadMessage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -23,12 +26,18 @@ class ThreadController extends Controller
         );
     }
 
-    public function newMessage(StoreThreadMessageRequest $request, User $user)
+    public function newMessage(StoreThreadMessageRequest $request, Thread $thread)
     {
-        $fields = $request->get('message');
-        $fields['thread_id'] = $user->thread->id;
-        ThreadMessage::create($fields);
+        $fields = $request->safe()->only(['message']);
+        $thread->messages()->create([
+            'user_id' => $thread->user->id,
+            'message' => $fields['message'],
+            'owner' => MessageOwner::USER,
+            'status' => MessageStatuses::UNREAD
+        ]);
 
-        return redirect()->to('front.thread');
+        $request->session()->flash('status', __('vars.message_was_created'));
+
+        return redirect()->to(route('front.thread'));
     }
 }

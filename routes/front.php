@@ -48,7 +48,7 @@ Route::prefix('/profile')->middleware(['auth'])->group(function () {
     Route::get('/records/{record}', [AppointmentController::class, 'record'])->name('front.records.view');
 
     Route::get('/thread', [ThreadController::class, 'thread'])->name('front.thread');
-    Route::post('/thread/{user}', [ThreadController::class, 'newMessage'])->name('front.thread.new_message');
+    Route::post('/thread/{thread}', [ThreadController::class, 'newMessage'])->name('front.thread.new_message');
 
     Route::get('/documents', [UserDocumentController::class, 'documents'])->name('front.documents');
     Route::post('/documents', [UserDocumentController::class, 'storeDocument'])->name('front.save_document');
