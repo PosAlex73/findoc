@@ -27,8 +27,6 @@ class UpdateThreadMessageRequest extends FormRequest
     {
         return [
             'message' => 'required',
-            'status' => ['required', Rule::in(MessageStatuses::getAll())],
-            'thread_id' => ['required', 'exists:threads,id']
         ];
     }
 }

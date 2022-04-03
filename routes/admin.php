@@ -53,6 +53,7 @@ Route::prefix('/boss')->middleware(['auth', 'is_admin'])->group(function () {
 
     //threads
     Route::get('/threads/{user}', [ThreadController::class, 'edit'])->name('threads');
+    Route::post('/thread/{thread}', [ThreadController::class, 'createMessage'])->name('thread.new_message');
 
     Route::get('/settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('/settings', [SettingController::class, 'update'])->name('settings.update');

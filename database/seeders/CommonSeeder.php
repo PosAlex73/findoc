@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\CommonStatuses;
 use App\Enums\User\Gender;
+use App\Enums\User\MessageOwner;
 use App\Enums\User\UserTypes;
 use App\Models\Appointment;
 use App\Models\Blog;
@@ -81,8 +82,12 @@ class CommonSeeder extends Seeder
         }
 
         $threads = Thread::all();
+        $message_owners = (new Collection(MessageOwner::getAll()));
+
         foreach ($threads as $thread) {
-            ThreadMessage::factory()->count(3)->for($thread, 'thread')->create();
+            ThreadMessage::factory()->count(3)->for($thread, 'thread')->create([
+                'owner' => $message_owners->random()
+            ]);
         }
 
         foreach ($categories as $category) {

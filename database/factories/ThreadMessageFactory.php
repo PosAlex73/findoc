@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\MessageStatuses;
+use App\Enums\User\MessageOwner;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,8 @@ class ThreadMessageFactory extends Factory
     {
         return [
             'message' => $this->faker->text(20),
-            'status' => MessageStatuses::UNREAD
+            'status' => MessageStatuses::UNREAD,
+            'owner' => MessageOwner::USER
         ];
     }
 }
