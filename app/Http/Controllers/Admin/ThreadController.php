@@ -21,7 +21,7 @@ class ThreadController extends AdminController
         $thread = $user->thread;
         $messages = $thread->messages;
 
-        return view('admin.views.users.edit',
+        return view('admin.views.users.thread',
             ['thread' => $thread, 'user' => $user, 'messages' => $messages]
         );
     }
