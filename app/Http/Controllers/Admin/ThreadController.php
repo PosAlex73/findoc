@@ -38,7 +38,7 @@ class ThreadController extends AdminController
 
         $request->session()->flash('status', __('vars.message_was_add'));
 
-        return redirect()->to('users.edit', ['user' => $thread->user]);
+        return redirect()->to(route('threads', ['user' => $thread->user]));
     }
 
     /**

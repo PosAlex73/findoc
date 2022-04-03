@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 @section('content')
-    <form action="{{ route('users.update', ['user' => $user]) }}" method="post">
+    <form action="{{ route('thread.new_message', ['thread' => $thread]) }}" method="post">
         @csrf
-        @method('PUT')
         <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
             <div class="d-flex align-items-center flex-wrap text-nowrap">
                 @include('admin.components.buttons.back_button', ['route' => 'users.index'])
@@ -31,7 +30,10 @@
                                             <i class="fas fa-times text-muted fa-xs"></i>
                                         </div>
                                     </div>
-                                    <div class="card-body" data-mdb-perfect-scrollbar="true" style="position: relative; height: 400px">
+                                    <div class="card-body"
+                                         data-mdb-perfect-scrollbar="true"
+                                         style="position: relative; height: 400px; overflow-x: auto"
+                                    >
                                         @forelse($messages as $message)
                                             @if($message->owner === \App\Enums\User\MessageOwner::ADMIN)
                                                 @include('admin.views.users.components.admin_message', ['message' => $message])
