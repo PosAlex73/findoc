@@ -26,6 +26,13 @@ class ThreadController extends Controller
         );
     }
 
+    /**
+     * Generates new message
+     *
+     * @param StoreThreadMessageRequest $request
+     * @param Thread $thread
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function newMessage(StoreThreadMessageRequest $request, Thread $thread)
     {
         $fields = $request->safe()->only(['message']);
